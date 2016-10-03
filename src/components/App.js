@@ -6,7 +6,7 @@ export default (props) => {
    return (
      <div>
        <NavBar title="houseMate" url='/' />
-      <h1> Welcome [name]! </h1>
+      <h1> Welcome! </h1>
      </div>
    )
  }

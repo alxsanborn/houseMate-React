@@ -7,6 +7,9 @@ import React from 'react';
          <a className='navbar-brand' href={props.url}>{props.title}</a>
          { "||" }
          <Link to="/signin">Sign In</Link>
+         { "||" }
+         <Link to="/signup">Sign Up</Link>
+
        </div>
      </nav>
    )

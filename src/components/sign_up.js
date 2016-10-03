@@ -1,15 +1,18 @@
 import React from 'react'
 
- class SignIn extends React.Component {
+ class SignUp extends React.Component {
    constructor(props) {
      super(props)
      this.state = {
-       credentials: {email: '',
+       credentials: {
+                     firstName: '',
+                     lastName: '',
+                     email: '',
                      password: ''
                    }
      }
    }
-   signInHandler(event) {
+   signUpHandler(event) {
      const field = event.target.name;
      const credentials = this.state.credentials;
      credentials[field] = event.target.value;
@@ -19,10 +22,12 @@ import React from 'react'
  render(){
    return (
      <div>
-     <h1>Sign In!</h1>
-     <form onSubmit={this.signInHandler}>
-     <label>email: </label>
-     <input ref='email' />
+     <h1>Sign Up!</h1>
+     <form onSubmit={this.signUpHandler}>
+     <label>first name: </label>
+     <input ref='firstName' />
+     <label>last name: </label>
+     <input ref='lastName' />
      <label>password: </label>
      <input type='password' ref='password'/>
      <input type="submit"/>
@@ -32,4 +37,4 @@ import React from 'react'
  }
  }
 
- module.exports = SignIn
+ module.exports = SignUp
