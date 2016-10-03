@@ -5,7 +5,9 @@ import React from 'react';
  import SignIn from './components/sign_in'
 
  export default (
-   <Route path='/' component={App} >
-     <Route path="/signin" component={SignIn} />
-   </Route>
+   <div>
+   <Route path="/signin" component={SignIn} />
+   <Route path='/' component={App} />
+   </div>
  )
+ //Don't nest navbar links in App
