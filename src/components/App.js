@@ -7,6 +7,8 @@ import SocialEvents from './social_events'
 import Chores from './chores/chores_index'
 import Messages from './messages'
 import { View } from 'react-native';
+import IconButton from 'material-ui/IconButton';
+import ActionHome from 'material-ui/svg-icons/action/home';
 
 
 export default (props) => {
@@ -18,7 +20,8 @@ export default (props) => {
           url='/'
           style={{
             fontFamily: 'Pacifico'
-          }}/>
+          }}
+          iconElementLeft={<IconButton><ActionHome /></IconButton>}/>
         <View style={{
           flex: 1,
           flexDirection: 'row',
