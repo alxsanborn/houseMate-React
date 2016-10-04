@@ -5,6 +5,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import SocialEvents from './social_events'
 import Chores from './chores'
+import Messages from './messages'
+import { View } from 'react-native';
 
 
 export default (props) => {
@@ -18,8 +20,27 @@ export default (props) => {
             fontFamily: 'Pacifico'
           }}/>
         <h1> Welcome! </h1>
-        <SocialEvents />
-        <Chores />
+        <View style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+          <View style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}>
+            <SocialEvents />
+            <Chores />
+          </View>
+          <View style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}>
+            <Messages />
+          </View>
+        </View>
        </div>
       </MuiThemeProvider>
    )
