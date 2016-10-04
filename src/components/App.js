@@ -3,10 +3,15 @@ import React from 'react';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+
 import SocialEvents from './social_events'
 import ChoresIndex from './chores/chores_index'
 import Messages from './messages'
+import Bills from './bills'
+
 import { View } from 'react-native';
+import IconButton from 'material-ui/IconButton';
+import ActionHome from 'material-ui/svg-icons/action/home';
 
 
 export default (props) => {
@@ -19,7 +24,8 @@ export default (props) => {
           style={{
             fontFamily: 'Pacifico'
           }}/>
-        <h1> Welcome! </h1>
+          }}
+          iconElementLeft={<IconButton><ActionHome /></IconButton>}/>
         <View style={{
           flex: 1,
           flexDirection: 'row',
@@ -32,6 +38,7 @@ export default (props) => {
           }}>
             <SocialEvents />
             <ChoresIndex />
+            <Bills />
           </View>
           <View style={{
             flex: 1,
