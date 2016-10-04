@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AppBar from 'material-ui/AppBar';
-import {amber300, amber50
+import {red300, red50
 } from 'material-ui/styles/colors';
 
 const style = {
@@ -11,10 +11,10 @@ const style = {
   margin: 10,
   textAlign: 'left',
   display: 'inline-block',
-  backgroundColor: amber50
+  backgroundColor: red50
 };
 
- class SocialEvents extends React.Component {
+ class Bills extends React.Component {
    constructor(props) {
      super(props)
      this.state = {
@@ -24,9 +24,9 @@ const style = {
 
  render(){
    return (
-     <div className='social-events'>
+     <div className='bills'>
      <Paper style={style} zDepth={3} >
-        <AppBar title="Upcoming Social Events" style={{backgroundColor: amber300
+        <AppBar title="Upcoming Bills" style={{backgroundColor: red300
 }}/>
        <ul>
           {this.props.social_events.map((event, index) =>
@@ -41,10 +41,10 @@ const style = {
  function mapStateToProps(state){
    return {
      social_events: state.events.filter(function(event){
-       return event.category === "social"
+       return event.category === "bill"
      })
    }
  }
 
  const componentCreator = connect(mapStateToProps)
- export default componentCreator(SocialEvents)
+ export default componentCreator(Bills)

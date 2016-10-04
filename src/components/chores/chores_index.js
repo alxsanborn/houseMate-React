@@ -3,13 +3,14 @@ import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AppBar from 'material-ui/AppBar';
-import {green300} from 'material-ui/styles/colors';
+import {green300, green50} from 'material-ui/styles/colors';
 
 const style = {
   width: 800,
   margin: 10,
   textAlign: 'left',
   display: 'inline-block',
+  backgroundColor: green50
 };
 
 
@@ -32,16 +33,7 @@ const style = {
         </ul>
        </Paper>
     </div>
-    //   <Card>
-    //     <CardHeader title="Upcoming Chores"/>
-    //     <CardText>
-    //       <ul>
-    //          {this.props.chores.map((chore, index) =>
-    //            <Checkbox label={chore.name}/>)}
-    //       </ul>
-    //     </CardText>
-    //   </Card>
-    //  </div>
+
    )
  }
  }
