@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
+import ChoreNew from './chores_new'
 
 const style = {
   width: 800,
@@ -30,6 +31,7 @@ const style = {
          {this.props.chores.map((chore, index) =>
            <Checkbox label={chore.name}/>)}
       </ul>
+      <ChoreNew />
      </Paper>
      </div>
    )
@@ -39,7 +41,7 @@ const style = {
  function mapStateToProps(state){
    return {
      chores: state.events.filter(function(event){
-       return event.category == "chore"
+       return event.category === "chore"
      })
    }
  }
