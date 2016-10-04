@@ -22,7 +22,7 @@ const style = {
    return (
      <div className='social-events'>
      <Paper style={style} zDepth={3} >
-       {"Messages"}
+       <h2>{"Messages"}</h2>
      </Paper>
      </div>
    )

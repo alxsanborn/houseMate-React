@@ -19,7 +19,6 @@ export default (props) => {
           style={{
             fontFamily: 'Pacifico'
           }}/>
-        <h1> Welcome! </h1>
         <View style={{
           flex: 1,
           flexDirection: 'row',
