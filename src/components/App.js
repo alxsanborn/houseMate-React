@@ -3,15 +3,9 @@ import React from 'react';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import Paper from 'material-ui/Paper';
+import SocialEvents from './social_events'
+import Chores from './chores'
 
-const style = {
-  height: 800,
-  width: 400,
-  margin: 10,
-  textAlign: 'center',
-  display: 'inline-block',
-};
 
 export default (props) => {
    return (
@@ -24,12 +18,8 @@ export default (props) => {
             fontFamily: 'Pacifico'
           }}/>
         <h1> Welcome! </h1>
-        <Paper style={style} zDepth={2} >
-          {"Hello!"}
-        </Paper>
-        <Paper style={style} zDepth={2} >
-          {"Hello!"}
-        </Paper>
+        <SocialEvents />
+        <Chores />
        </div>
       </MuiThemeProvider>
    )
