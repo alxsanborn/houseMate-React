@@ -9,7 +9,7 @@ const style = {
   display: 'inline-block',
 };
 
- class Chores extends React.Component {
+ class ChoresIndex extends React.Component {
    constructor(props) {
      super(props)
      this.state = {
@@ -29,4 +29,4 @@ const style = {
  }
  }
 
- module.exports = Chores
+ module.exports = ChoresIndex

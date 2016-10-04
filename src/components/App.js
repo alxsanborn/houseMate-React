@@ -4,7 +4,7 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import SocialEvents from './social_events'
-import Chores from './chores'
+import Chores from './chores/chores_index'
 import Messages from './messages'
 import { View } from 'react-native';
 
