@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
+import AppBar from 'material-ui/AppBar';
+import {green300} from 'material-ui/styles/colors';
 
 const style = {
   width: 800,
@@ -19,19 +21,27 @@ const style = {
      }
    }
 
-
  render(){
    return (
-     <div className='chores'>
-     <Paper style={style} zDepth={3} >
-      <h2 style={{textAlign: 'center'}}>Upcoming Chores</h2><br/>
-
-      <ul>
-         {this.props.chores.map((chore, index) =>
-           <Checkbox label={chore.name}/>)}
-      </ul>
-     </Paper>
-     </div>
+    <div className='chores'>
+       <Paper style={style} zDepth={3} >
+       <AppBar title="Upcoming Chores" style={{backgroundColor: green300}}/>
+        <ul>
+           {this.props.chores.map((chore, index) =>
+             <Checkbox label={chore.name}/>)}
+        </ul>
+       </Paper>
+    </div>
+    //   <Card>
+    //     <CardHeader title="Upcoming Chores"/>
+    //     <CardText>
+    //       <ul>
+    //          {this.props.chores.map((chore, index) =>
+    //            <Checkbox label={chore.name}/>)}
+    //       </ul>
+    //     </CardText>
+    //   </Card>
+    //  </div>
    )
  }
  }
@@ -39,7 +49,7 @@ const style = {
  function mapStateToProps(state){
    return {
      chores: state.events.filter(function(event){
-       return event.category == "chore"
+       return event.category === "chore"
      })
    }
  }

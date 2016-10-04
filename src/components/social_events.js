@@ -2,12 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
+import AppBar from 'material-ui/AppBar';
+import {amber300
+} from 'material-ui/styles/colors';
 
 const style = {
   height: 400,
   width: 800,
   margin: 10,
-  textAlign: 'center',
+  textAlign: 'left',
   display: 'inline-block',
 };
 
@@ -23,7 +26,8 @@ const style = {
    return (
      <div className='social-events'>
      <Paper style={style} zDepth={3} >
-       <h2>{"Upcoming Social Events"}</h2>
+        <AppBar title="Upcoming Social Events" style={{backgroundColor: amber300
+}}/>
        <ul>
           {this.props.social_events.map((event, index) =>
             <Checkbox label={event.name}/>)}
