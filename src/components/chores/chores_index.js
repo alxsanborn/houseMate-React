@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 
 const style = {
@@ -13,7 +14,7 @@ const style = {
    constructor(props) {
      super(props)
      this.state = {
-      events: []
+      chores: []
      }
    }
 
@@ -22,11 +23,21 @@ const style = {
    return (
      <div className='chores'>
      <Paper style={style} zDepth={3} >
-       {"Chores!"}
+       <ul>
+         {this.props.chores.map(chore => chore.name)}
+         </ul>
+
      </Paper>
      </div>
    )
  }
  }
 
- module.exports = ChoresIndex
+ function mapStateToProps(state){
+   return {
+     chores: state.chores
+   }
+ }
+
+const componentCreator = connect(mapStateToProps)
+export default componentCreator(ChoresIndex)

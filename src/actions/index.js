@@ -1,4 +1,4 @@
-const defaultChores = [{id: 1, name: "Mop the floors", created_by: 1}, {id: 2, name: 'clean the bathtub', id: 2}]
+const defaultChores = [{id: 1, name: "Mop the floors", created_by: 1}, {id: 2, name: 'clean the bathtub', created_by: 2}]
 
 export function fetchChores(){
   return {

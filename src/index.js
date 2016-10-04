@@ -18,6 +18,7 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const store = createStoreWithMiddleware(rootReducer)
 
 store.dispatch(fetchChores())
+//debugger
 
 console.log(store.getState())
 
