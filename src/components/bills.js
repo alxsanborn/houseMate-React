@@ -3,15 +3,12 @@ import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AppBar from 'material-ui/AppBar';
-import {red300, red50
-} from 'material-ui/styles/colors';
 
 const style = {
   width: 800,
   margin: 10,
   textAlign: 'left',
   display: 'inline-block',
-  backgroundColor: red50
 };
 
  class Bills extends React.Component {
@@ -26,7 +23,7 @@ const style = {
    return (
      <div className='bills'>
      <Paper style={style} zDepth={3} >
-        <AppBar title="Upcoming Bills" style={{backgroundColor: red300
+        <AppBar title="Upcoming Bills" style={{backgroundColor: '#68B6C2'
 }}/>
        <ul>
           {this.props.social_events.map((event, index) =>
