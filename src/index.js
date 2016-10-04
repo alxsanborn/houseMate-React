@@ -12,13 +12,12 @@ import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './reducers'
 import ReduxPromise from 'redux-promise'
 
-import {fetchChores} from './actions'
+import {fetchEvents} from './actions'
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const store = createStoreWithMiddleware(rootReducer)
 
-store.dispatch(fetchChores())
-//debugger
+store.dispatch(fetchEvents())
 
 console.log(store.getState())
 

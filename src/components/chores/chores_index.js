@@ -4,7 +4,6 @@ import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 
 const style = {
-  height: 400,
   width: 800,
   margin: 10,
   textAlign: 'left',
@@ -39,7 +38,9 @@ const style = {
 
  function mapStateToProps(state){
    return {
-     chores: state.chores
+     chores: state.events.filter(function(event){
+       return event.category == "chore"
+     })
    }
  }
 

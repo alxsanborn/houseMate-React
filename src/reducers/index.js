@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import  choresReducer from './chores_reducer'
+import  eventsReducer from './events_reducer'
 
 const rootReducer = combineReducers({
-  chores: choresReducer
+  events: eventsReducer
 })
 
 export default rootReducer
