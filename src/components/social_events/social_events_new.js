@@ -8,28 +8,26 @@ import FlatButton from 'material-ui/FlatButton'
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 
-class ChoreNew extends React.Component {
+class SocialEventNew extends React.Component {
   constructor(props){
     super(props)
-     this.newChoreHandler = this.newChoreHandler.bind(this)
+     this.newSocialEventHandler = this.newSocialEventHandler.bind(this)
   }
 
-   newChoreHandler(event){
+   newSocialEventHandler(event){
      event.preventDefault()
-     debugger
-     const newChore = {
+     const newSocialEvent = {
        name: this.refs.name.value,
-       category: "chore",
+       category: "socialize",
      }
 
-     this.props.actions.addEvent(newChore)
+     this.props.actions.addEvent(newSocialEvent)
    }
 
 
 render(){
   return (
-
-    <form onSubmit={this.newChoreHandler}>
+    <form onSubmit={this.newSocialEventHandler}>
       <input ref='name'/>
       <input type="submit" />
     </form>
@@ -41,4 +39,4 @@ function mapDispatchToProps(dispatch){
 }
 
 const componentCreator = connect(null, mapDispatchToProps)
-export default componentCreator(ChoreNew);
+export default componentCreator(SocialEventNew);

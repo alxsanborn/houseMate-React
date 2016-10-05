@@ -32,7 +32,7 @@ const style = {
            {this.props.chores.map((chore, index) =>
              <Checkbox label={chore.name}/>)}
         </ul>
-        <ChoreNew />
+        <ul><ChoreNew /></ul>
        </Paper>
     </div>
    )
