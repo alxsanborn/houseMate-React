@@ -1,7 +1,6 @@
 import React from 'react'
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
-import {orange300, orange50} from 'material-ui/styles/colors';
 
 const style = {
   height: 620,
@@ -9,7 +8,6 @@ const style = {
   margin: 10,
   textAlign: 'left',
   display: 'inline-block',
-  backgroundColor: orange50
 };
 
  class Messages extends React.Component {
@@ -25,7 +23,7 @@ const style = {
    return (
      <div className='social-events'>
      <Paper style={style} zDepth={3} >
-      <AppBar title="Message Board" style={{backgroundColor: orange300}}/>
+      <AppBar title="Message Board" style={{backgroundColor: '#68B6C2'}}/>
      </Paper>
      </div>
    )

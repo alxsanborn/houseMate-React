@@ -22,7 +22,8 @@ export default (props) => {
           title="houseMate"
           url='/'
           style={{
-            fontFamily: 'Pacifico'
+            fontFamily: 'Pacifico',
+            backgroundColor: '#e3704d'
           }}
           iconElementLeft={<IconButton><ActionHome /></IconButton>}/>
         <View style={{
