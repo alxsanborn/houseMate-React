@@ -1,12 +1,11 @@
-import React from 'react'
 import * as actions from '../../actions/index'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import { Field, reduxForm } from 'redux-form'
-import TextField from 'material-ui/TextField'
-import FlatButton from 'material-ui/FlatButton'
-import DatePicker from 'material-ui/DatePicker'
-import TimePicker from 'material-ui/TimePicker'
+import ChoresForm from './chores_form'
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+
+
 
 class ChoreNew extends React.Component {
   constructor(props){
@@ -17,25 +16,25 @@ class ChoreNew extends React.Component {
    newChoreHandler(event){
      event.preventDefault()
      debugger
-     const newChore = {
-       name: this.refs.name.value,
-       category: "chore",
-     }
+    //  const newChore = {
+    //    name: this.refs.choreform.value,
+    //    category: "chore",
+    //  }
 
-     this.props.actions.addEvent(newChore)
+    // this.props.actions.addEvent(newChore)
    }
-
 
 render(){
   return (
-
-    <form onSubmit={this.newChoreHandler}>
-      <input ref='name'/>
-      <input type="submit" />
-    </form>
+    <div>
+    <ChoresForm onSubmit={this.newChoreHandler} />
+    </div>
   )
 }
 }
+
+
+
 function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}
 }

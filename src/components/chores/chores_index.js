@@ -37,6 +37,8 @@ const style = {
  }
  }
 
+
+
  function mapStateToProps(state){
    return {
      chores: state.events.filter(function(event){
