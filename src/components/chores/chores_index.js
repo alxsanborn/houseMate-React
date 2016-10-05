@@ -13,7 +13,7 @@ const style = {
 };
 
 
- class ChoresIndex extends React.Component {
+class ChoresIndex extends React.Component {
    constructor(props) {
      super(props)
      this.state = {
@@ -25,12 +25,12 @@ const style = {
    return (
     <div className='chores'>
        <Paper style={style} zDepth={3} >
-       <AppBar title="Upcoming Chores" style={{backgroundColor: '#68B6C2'}}/>
+       <AppBar title="Upcoming Chores" style={{backgroundColor: '#68B6C2'}}
+       iconElementRight={<ChoreNew />}/>
         <ul>
            {this.props.chores.map((chore, index) =>
              <Checkbox label={chore.name}/>)}
         </ul>
-        <ChoreNew />
        </Paper>
     </div>
    )
