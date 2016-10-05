@@ -43,7 +43,7 @@ export default class AddChoreDialog extends React.Component {
           modal={true}
           open={this.state.open}
         >
-          {"Form will be here"}
+          <ChoresForm/>
         </Dialog>
       </div>
     );

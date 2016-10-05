@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
+import SocialEventNew from './social_events_new'
 import AppBar from 'material-ui/AppBar';
 
 const style = {
@@ -29,6 +30,7 @@ const style = {
           {this.props.social_events.map((event, index) =>
             <Checkbox label={event.name}/>)}
        </ul>
+         <ul><SocialEventNew /></ul>
      </Paper>
      </div>
    )
