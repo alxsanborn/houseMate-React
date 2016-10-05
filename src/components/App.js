@@ -3,15 +3,16 @@ import React from 'react';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import Paper from 'material-ui/Paper';
 
-const style = {
-  height: 800,
-  width: 400,
-  margin: 10,
-  textAlign: 'center',
-  display: 'inline-block',
-};
+import SocialEvents from './social_events/social_events_index'
+import ChoresIndex from './chores/chores_index'
+import Messages from './messages/messages_index'
+import Bills from './bills/bills_index'
+
+import { View } from 'react-native';
+import IconButton from 'material-ui/IconButton';
+import ActionHome from 'material-ui/svg-icons/action/home';
+
 
 export default (props) => {
    return (
@@ -21,15 +22,32 @@ export default (props) => {
           title="houseMate"
           url='/'
           style={{
-            fontFamily: 'Pacifico'
-          }}/>
-        <h1> Welcome! </h1>
-        <Paper style={style} zDepth={2} >
-          {"Hello!"}
-        </Paper>
-        <Paper style={style} zDepth={2} >
-          {"Hello!"}
-        </Paper>
+            fontFamily: 'Pacifico',
+            backgroundColor: '#e3704d'
+          }}
+          iconElementLeft={<IconButton><ActionHome /></IconButton>}/>
+        <View style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+          <View style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}>
+            <SocialEvents />
+            <ChoresIndex />
+            <Bills />
+          </View>
+          <View style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}>
+            <Messages />
+          </View>
+        </View>
        </div>
       </MuiThemeProvider>
    )
