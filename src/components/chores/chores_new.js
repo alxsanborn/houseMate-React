@@ -3,10 +3,17 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import Add from 'material-ui/svg-icons/content/add'
+import ChoresForm from './chores_form'
 
 export default class AddChoreDialog extends React.Component {
-  state = {
+  constructor(){
+    super();
+
+    this.state = {
     open: false,
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleOpen = () => {
@@ -15,6 +22,10 @@ export default class AddChoreDialog extends React.Component {
 
   handleClose = () => {
     this.setState({open: false});
+  };
+
+  handleSubmit() {
+    debugger;
   };
 
   render() {
@@ -27,8 +38,7 @@ export default class AddChoreDialog extends React.Component {
       <FlatButton
         label="Submit"
         primary={true}
-        disabled={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={this.handleSubmit}
       />,
     ];
 

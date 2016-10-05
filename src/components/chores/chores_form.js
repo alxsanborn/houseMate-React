@@ -5,13 +5,12 @@ import TextField from 'material-ui/TextField';
 const ChoresForm = (props) => {
     const { handleSubmit } = props;
     return (
-      <form onSubmit={handleSubmit}>
+      <form>
       <div>
        <Field name="name" component={name =>
-         <TextField name='name' hintText="Add a new chore" />
+         <TextField name='name' hintText="Chore" />
        } />
       </div>
-      <button type='submit'>submit</button>
       </form>
     );
 
