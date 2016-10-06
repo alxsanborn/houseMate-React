@@ -4,6 +4,7 @@ import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AppBar from 'material-ui/AppBar';
 import AddSocialEventForm from './social_events_new'
+import Moment from 'moment';
 
 const style = {
   width: 800,
@@ -28,7 +29,7 @@ const style = {
 }} iconElementRight={<AddSocialEventForm/>}/>
        <ul>
           {this.props.social_events.map((event, index) =>
-            <Checkbox label={event.name}/>)}
+            <Checkbox label={`${event.name} | ${Moment(event.start_time).format('dddd')}`}/>)}
        </ul>
          <ul><AddSocialEventForm/></ul>
      </Paper>
