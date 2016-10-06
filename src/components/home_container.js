@@ -43,7 +43,6 @@ export default (props) => {
           flexDirection: 'column',
           justifyContent: 'space-between',
         }}>
-          <SignIn />
           <Messages />
         </View>
       </View>

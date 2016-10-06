@@ -3,8 +3,10 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as sessionActions from '../actions/session_actions';
 
+
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
+import {browserHistory} from 'react-router'
 
 
 class SignIn extends React.Component {
@@ -24,7 +26,6 @@ class SignIn extends React.Component {
 
   onSave(event) {
     event.preventDefault();
-    debugger;
     this.props.actions.signInUser(this.state.credentials);
   }
 
