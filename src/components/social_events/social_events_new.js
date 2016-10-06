@@ -18,8 +18,9 @@ class SocialEventNew extends React.Component {
      event.preventDefault()
      const newSocialEvent = {
        name: this.refs.name.value,
-       category: "socialize",
+       category: "social"
      }
+     this.refs.name.value = ""
 
      this.props.actions.addEvent(newSocialEvent)
    }
