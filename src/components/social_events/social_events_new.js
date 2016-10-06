@@ -10,33 +10,40 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import Add from 'material-ui/svg-icons/content/add'
+import DatePicker from 'material-ui/DatePicker'
+import TimePicker from 'material-ui/TimePicker';
 
 class AddSocialEventForm extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
-    open: false
+    open: false,
+    date: null,
+    time: null,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
-    this.handleChange = this.handleChange.bind(this);
+    this.handleDate = this.handleDate.bind(this);
+    this.handleTime = this.handleTime.bind(this);
   };
 
+  handleTime(event, time){
+    this.setState({time: time})
+  }
+  handleDate(event, date){
+    this.setState({date: date})
+  }
   handleSubmit(){
     const newSocialEvent = {
       name: this.refs.name.value,
-      category: "social"
+      end_time: this.state.date,
+      category: "social",
     }
+
     this.refs.name.getRenderedComponent().props.input.onChange("");
     this.handleClose()
-
     this.props.actions.addEvent(newSocialEvent)
-  }
-
-  handleChange(event){
-    this.refs.name.getRenderedComponent().props.input.onChange(event.target.value);
   }
 
   handleOpen = () => {
@@ -73,7 +80,9 @@ class AddSocialEventForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-          <Field withRef={true} ref="name" component={TextField} hintText="What is your social event?" onChange={this.handleChange} value={this.state.name}/>
+          <Field withRef={true} ref="name" name="name" component={TextField} hintText="What event would you like to log?" />
+         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="What day is it?" />
+          <Field withRef={true} ref="time" name="time" component={        TimePicker} onChange={this.handleDate} hintText="What time does it start?" />
         </form>
       </Dialog>
       </div>

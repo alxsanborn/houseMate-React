@@ -3,10 +3,9 @@ import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AppBar from 'material-ui/AppBar';
-import BillNew from './bills_new'
+import AddBillForm from './bills_new'
 import {red300, red50
 } from 'material-ui/styles/colors';
-
 
 const style = {
   width: 800,
@@ -15,7 +14,7 @@ const style = {
   display: 'inline-block',
 };
 
- class Bills extends React.Component {
+ class BillsIndex extends React.Component {
    constructor(props) {
      super(props)
      this.state = {
@@ -27,13 +26,13 @@ const style = {
    return (
      <div className='bills'>
      <Paper style={style} zDepth={3} >
-        <AppBar title="Upcoming Bills" style={{backgroundColor: '#68B6C2'
-}}/>
+        <AppBar title="Upcoming Bills" style={{backgroundColor: '#68B6C2'}}
+        iconElementRight={<AddBillForm/>}/>
        <ul>
           {this.props.social_events.map((event, index) =>
             <Checkbox label={event.name}/>)}
        </ul>
-       <ul><BillNew /></ul>
+       <ul><AddBillForm/></ul>
      </Paper>
      </div>
    )
@@ -49,4 +48,4 @@ const style = {
  }
 
  const componentCreator = connect(mapStateToProps)
- export default componentCreator(Bills)
+ export default componentCreator(BillsIndex)

@@ -81,8 +81,8 @@ class AddChoreForm extends React.Component {
         open={this.state.open}>
         <form>
           <Field withRef={true} ref="name" name="name" component={TextField} hintText="What chore needs to be completed?" />
-         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="Deadline: date" />
-          <Field withRef={true} ref="time" name="time" component={        TimePicker} onChange={this.handleDate} hintText="Deadline: time" />
+         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="Date deadline" />
+          <Field withRef={true} ref="time" name="time" component={        TimePicker} onChange={this.handleDate} hintText="Time deadline" />
         </form>
       </Dialog>
       </div>

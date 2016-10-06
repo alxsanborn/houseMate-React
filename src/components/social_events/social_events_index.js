@@ -12,7 +12,7 @@ const style = {
   display: 'inline-block',
 };
 
- class SocialEvents extends React.Component {
+ class SocialEventsIndex extends React.Component {
    constructor(props) {
      super(props)
      this.state = {
@@ -46,4 +46,4 @@ const style = {
  }
 
  const componentCreator = connect(mapStateToProps)
- export default componentCreator(SocialEvents)
+ export default componentCreator(SocialEventsIndex)
