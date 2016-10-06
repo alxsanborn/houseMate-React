@@ -17,18 +17,22 @@ class AddChoreForm extends React.Component {
     super(props);
 
     this.state = {
-    open: false
+    open: false,
+    end_time: null
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.handleDate = this.handleDate.bind(this);
   };
 
+  handleDate(event, date){
+    this.setState({end_time: date})
+  }
   handleSubmit(){
     const newChore = {
       name: this.refs.name.value,
-      end_time: this.refs.end_time.value,
-      category: "chore"
+      end_time: this.state.end_time,
+      category: "chore",
     }
 
     this.refs.name.getRenderedComponent().props.input.onChange("");
@@ -71,7 +75,7 @@ class AddChoreForm extends React.Component {
         open={this.state.open}>
         <form>
           <Field withRef={true} ref="name" name="name" component={TextField} hintText="What chore needs to be completed?" />
-         <Field withRef={true} ref="end_time" name="end_time" component={TextField} hintText="Time?" />
+         <Field withRef={true} ref="end_time" name="end_time" component={DatePicker} onChange={this.handleDate} hintText="Deadline: date" />
         </form>
       </Dialog>
       </div>
