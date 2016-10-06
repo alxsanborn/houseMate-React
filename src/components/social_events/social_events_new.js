@@ -30,6 +30,7 @@ class AddSocialEventForm extends React.Component {
       category: "social"
     }
     this.refs.name.getRenderedComponent().props.input.onChange("");
+    this.handleClose()
 
     this.props.actions.addEvent(newSocialEvent)
   }

@@ -22,8 +22,6 @@ class AddChoreForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.handleNameChange = this.handleNameChange.bind(this, 'name');
-    this.handleDateChange = this.handleDateChange.bind(this, 'end_time')
   };
 
   handleSubmit(){
@@ -32,16 +30,10 @@ class AddChoreForm extends React.Component {
       end_time: this.refs.end_time.value,
       category: "chore"
     }
+
     this.refs.name.getRenderedComponent().props.input.onChange("");
-
+    this.handleClose()
     this.props.actions.addEvent(newChore)
-  }
-
-  handleNameChange(event){
-    this.refs.name.getRenderedComponent().props.input.onChange(event.target.value);
-  }
-  handleDateChange(event){
-    this.refs.end_time.getRenderedComponent().props.input.onChange(event.target.value);
   }
 
   handleOpen = () => {
@@ -78,8 +70,8 @@ class AddChoreForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-          <Field withRef={true} ref="name" component={TextField} hintText="What chore needs to be completed?" onChange={this.handleNameChange} value={this.state.name}/>
-          <Field withRef={true} ref="end_time" component={DatePicker} hintText="Time?" onChange={this.handleDateChange} value={this.state.end_time}/>
+          <Field withRef={true} ref="name" name="name" component={TextField} hintText="What chore needs to be completed?" />
+         <Field withRef={true} ref="end_time" name="end_time" component={TextField} hintText="Time?" />
         </form>
       </Dialog>
       </div>
@@ -97,6 +89,8 @@ function mapDispatchToProps(dispatch){
 
 const componentCreator = connect(null, mapDispatchToProps)
 export default componentCreator(AddChoreForm);
+
+
 
 
 // import React from 'react';
