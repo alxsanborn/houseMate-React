@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "material-datepicker": "0.0.1",
-    "material-datetime-picker": "^1.0.1",
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
     "react-datetime": "^2.6.0",

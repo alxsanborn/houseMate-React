@@ -11,6 +11,7 @@ import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import Add from 'material-ui/svg-icons/content/add'
 import DatePicker from 'material-ui/DatePicker'
+import TimePicker from 'material-ui/TimePicker';
 
 class AddChoreForm extends React.Component {
   constructor(props){
@@ -18,20 +19,25 @@ class AddChoreForm extends React.Component {
 
     this.state = {
     open: false,
-    end_time: null
+    date: null,
+    time: null,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleTime = this.handleTime.bind(this);
   };
 
+  handleTime(event, time){
+    this.setState({time: time})
+  }
   handleDate(event, date){
-    this.setState({end_time: date})
+    this.setState({date: date})
   }
   handleSubmit(){
     const newChore = {
       name: this.refs.name.value,
-      end_time: this.state.end_time,
+      end_time: this.state.date,
       category: "chore",
     }
 
@@ -75,7 +81,8 @@ class AddChoreForm extends React.Component {
         open={this.state.open}>
         <form>
           <Field withRef={true} ref="name" name="name" component={TextField} hintText="What chore needs to be completed?" />
-         <Field withRef={true} ref="end_time" name="end_time" component={DatePicker} onChange={this.handleDate} hintText="Deadline: date" />
+         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="Deadline: date" />
+          <Field withRef={true} ref="time" name="time" component={        TimePicker} onChange={this.handleDate} hintText="Deadline: time" />
         </form>
       </Dialog>
       </div>
