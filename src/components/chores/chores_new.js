@@ -10,6 +10,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import Add from 'material-ui/svg-icons/content/add'
+//import DatePicker from 'material-ui/DatePicker'
+import MaterialDateTimePicker from 'material-datetime-picker'
 
 class AddChoreForm extends React.Component {
   constructor(props){
@@ -27,15 +29,18 @@ class AddChoreForm extends React.Component {
   handleSubmit(){
     const newChore = {
       name: this.refs.name.value,
+      end_time: this.refs.end_time.value,
       category: "chore"
     }
+    debugger
     this.refs.name.getRenderedComponent().props.input.onChange("");
 
     this.props.actions.addEvent(newChore)
   }
 
   handleChange(event){
-    this.refs.name.getRenderedComponent().props.input.onChange(event.target.value);
+    this.refs.name.getRenderedComponent().props.input.onChange(event.target.value)
+    this.refs.end_time.getRenderedComponent().props.input.onChange(event.target.value)
   }
 
   handleOpen = () => {
@@ -72,7 +77,8 @@ class AddChoreForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-          <Field withRef={true} ref="name" component={TextField} hintText="Chore Name" onChange={this.handleChange} value={this.state.name}/>
+          <Field withRef={true} ref="name" component={TextField} hintText="What chore needs to be completed?" onChange={this.handleChange} value={this.state.name}/>
+
         </form>
       </Dialog>
       </div>
