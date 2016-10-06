@@ -6,8 +6,11 @@
     "react-scripts": "0.6.1"
   },
   "dependencies": {
+    "material-datepicker": "0.0.1",
+    "material-datetime-picker": "^1.0.1",
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
+    "react-datetime": "^2.6.0",
     "react-dom": "^15.3.2",
     "react-native-web": "0.0.45",
     "react-redux": "^4.4.5",
