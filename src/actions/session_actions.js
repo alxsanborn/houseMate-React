@@ -9,8 +9,10 @@ export function signinSuccess() {
 
 export function signInUser(credentials) {
   return function(dispatch) {
-    return sessionApi.signin(credentials).then(response => {
+    return sessionApi.signin(credentials)
+      .then(response => {
       sessionStorage.setItem('jwt', response.jwt);
+      //setState() to have current user here
       dispatch(signinSuccess());
     }).catch(error => {
       throw (error);

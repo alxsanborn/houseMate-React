@@ -15,10 +15,6 @@ import ReduxPromise from 'redux-promise'
 
 import {fetchEvents} from './actions'
 
-// const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-// const store = createStoreWithMiddleware(rootReducer)
-// store.dispatch(fetchEvents())
-
 const store = configureStore();
 store.dispatch(fetchEvents())
 

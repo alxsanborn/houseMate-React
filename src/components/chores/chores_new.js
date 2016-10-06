@@ -1,42 +1,203 @@
-import React from 'react'
+import { reduxForm, Field } from 'redux-form'
+import {TextField} from 'redux-form-material-ui'
+import React from 'react';
+
 import * as actions from '../../actions/index'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import { Field, reduxForm } from 'redux-form'
-import TextField from 'material-ui/TextField'
-import FlatButton from 'material-ui/FlatButton'
-import DatePicker from 'material-ui/DatePicker'
-import TimePicker from 'material-ui/TimePicker'
 
-class ChoreNew extends React.Component {
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import IconButton from 'material-ui/IconButton';
+import Add from 'material-ui/svg-icons/content/add'
+import DatePicker from 'material-ui/DatePicker'
+
+class AddChoreForm extends React.Component {
   constructor(props){
-    super(props)
-     this.newChoreHandler = this.newChoreHandler.bind(this)
+    super(props);
+
+    this.state = {
+    open: false
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.handleNameChange = this.handleNameChange.bind(this, 'name');
+    this.handleDateChange = this.handleDateChange.bind(this, 'end_time')
+  };
+
+  handleSubmit(){
+    const newChore = {
+      name: this.refs.name.value,
+      end_time: this.refs.end_time.value,
+      category: "chore"
+    }
+    this.refs.name.getRenderedComponent().props.input.onChange("");
+
+    this.props.actions.addEvent(newChore)
   }
 
-   newChoreHandler(event){
-     event.preventDefault()
-     const newChore = {
-       name: this.refs.name.value,
-       category: "chore",
-     }
+  handleNameChange(event){
+    this.refs.name.getRenderedComponent().props.input.onChange(event.target.value);
+  }
 
-     this.props.actions.addEvent(newChore)
-   }
+  handleDateChange(event){
+    this.refs.end_time.getRenderedComponent().props.input.onChange(event.target.value);
+  }
 
-render(){
-  return (
+  handleOpen = () => {
+    this.setState({open: true});
+  };
 
-    <form onSubmit={this.newChoreHandler}>
-      <input ref='name'/>
-      <input type="submit" />
-    </form>
-  )
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+
+  render() {
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={this.handleClose}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        type='submit'
+        onTouchTap={this.handleSubmit}
+      />,
+    ];
+
+    return (
+      <div>
+      <IconButton tooltip="Add Chore" onTouchTap={this.handleOpen}>
+        <Add color={"#FFF"}/>
+      </IconButton>
+      <Dialog
+        title="Add a Chore"
+        actions={actions}
+        modal={true}
+        open={this.state.open}>
+        <form>
+          <Field withRef={true} ref="name" component={TextField} hintText="What chore needs to be completed?" onChange={this.handleNameChange} value={this.state.name}/>
+          <Field withRef={true} ref="end_time" component={DatePicker} hintText="Time?" onChange={this.handleDateChange} value={this.state.end_time}/>
+        </form>
+      </Dialog>
+      </div>
+    )
+  }
 }
-}
+
+AddChoreForm = reduxForm({
+  form: 'AddChoreForm'
+})(AddChoreForm)
+
 function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
 const componentCreator = connect(null, mapDispatchToProps)
-export default componentCreator(ChoreNew);
+export default componentCreator(AddChoreForm);
+
+
+// import React from 'react';
+// import Dialog from 'material-ui/Dialog';
+// import FlatButton from 'material-ui/FlatButton';
+// import IconButton from 'material-ui/IconButton';
+// import Add from 'material-ui/svg-icons/content/add'
+// import ChoresForm from './chores_form'
+// import { connect } from 'react-redux'
+// import { Field, reduxForm, formValueSelector, getFormValues } from 'redux-form'
+// import TextField from 'material-ui/TextField';
+//
+// export const fields = [
+//   'name'
+// ]
+//
+// class AddChoreForm extends React.Component {
+//   constructor(props){
+//     super(props);
+//
+//     this.state = {
+//     open: false,
+//     value: ""
+//     }
+//
+//     this.handleSubmit = this.handleSubmit.bind(this)
+//
+//     this.inputHandler = this.inputHandler.bind(this)
+//   };
+//
+//   handleOpen = () => {
+//     this.setState({open: true});
+//   };
+//
+//   handleClose = () => {
+//     this.setState({open: false});
+//   };
+//
+//   handleSubmit(event) {
+//     debugger;
+//     this.handleClose()
+//   }
+//
+//   inputHandler(event){
+//     this.setState({value: event.target.value});
+//   }
+//
+//   render() {
+//     const actions = [
+//       <FlatButton
+//         label="Cancel"
+//         primary={true}
+//         onTouchTap={this.handleClose}
+//       />,
+//       <FlatButton
+//         label="Submit"
+//         primary={true}
+//         type='submit'
+//         onTouchTap={this.handleSubmit}
+//       />,
+//     ];
+//
+//     const {handleSubmit} = this.props;
+//
+//     return (
+//       <div>
+//         <IconButton tooltip="Add Chore" onTouchTap={this.handleOpen}>
+//           <Add color={"#FFF"}/>
+//         </IconButton>
+//         <Dialog
+//           title="Add a Chore"
+//           actions={actions}
+//           modal={true}
+//           open={this.state.open}>
+//           <form>
+//             <Field name="name" ref="name" withRef={true} component={name => <TextField {...name} hintText = "Chore" />}/>
+//           </form>
+//         </Dialog>
+//       </div>
+//     );
+//   }
+// }
+//
+//
+// AddChoreForm = reduxForm({
+//   form: 'newChore',
+//   fields: ''
+// })(AddChoreForm)
+//
+// const selector = formValueSelector('new-chore')
+// AddChoreForm = connect(
+//   state => {
+//     // can select values individually
+//     // const nameValue = selector(state, 'name')
+//     return {
+//
+//     }
+//   }
+// )(AddChoreForm)
+//
+//
+// export default AddChoreForm;

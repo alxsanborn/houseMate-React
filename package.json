@@ -6,8 +6,11 @@
     "react-scripts": "0.6.1"
   },
   "dependencies": {
+    "material-datepicker": "0.0.1",
+    "material-datetime-picker": "^1.0.1",
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
+    "react-datetime": "^2.6.0",
     "react-dom": "^15.3.2",
     "react-native-web": "0.0.45",
     "react-redux": "^4.4.5",
@@ -17,7 +20,8 @@
     "redux-form": "^6.0.5",
     "redux-immutable-state-invariant": "^1.2.4",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "redux-form-material-ui": "^4.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

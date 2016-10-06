@@ -1,5 +1,4 @@
 import React from 'react';
-import TextInput from './common/text_input';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as sessionActions from '../actions/session_actions';
@@ -68,21 +67,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(SignIn)
-
-
-/*<TextInput
-  name="email"
-  label="email"
-  value={this.state.credentials.email}
-  onChange={this.onChange}/>
-
-<TextInput
-  name="password"
-  label="password"
-  type="password"
-  value={this.state.credentials.password}
-  onChange={this.onChange}/>
-
-<input
-  type="submit"
-  onClick={this.onSave}/>*/
