@@ -40,6 +40,7 @@ class AddChoreForm extends React.Component {
   handleNameChange(event){
     this.refs.name.getRenderedComponent().props.input.onChange(event.target.value);
   }
+
   handleDateChange(event){
     this.refs.end_time.getRenderedComponent().props.input.onChange(event.target.value);
   }
@@ -47,6 +48,7 @@ class AddChoreForm extends React.Component {
   handleOpen = () => {
     this.setState({open: true});
   };
+
 
   handleClose = () => {
     this.setState({open: false});

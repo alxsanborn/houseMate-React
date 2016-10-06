@@ -1,5 +1,3 @@
-const defaultEvents = [{id: 1, name: "Mop the floors", created_by: 1}, {id: 2, name: 'clean the bathtub', created_by: 2}]
-
 export function fetchEvents(){
   const events = fetch('http://localhost:3000/api/v1/events').then(
     response => {
@@ -15,6 +13,7 @@ export function fetchEvents(){
   }
 }
 
+
 export function addEvent(newEventFromForm){
   const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
     method: 'POST',
@@ -23,7 +22,7 @@ export function addEvent(newEventFromForm){
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({event: newEventFromForm})
-  }).then(response=>{
+  }).then(response => {
     return response.json()
   }).then(newEventPayload => {
     return newEventPayload

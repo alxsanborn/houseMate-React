@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 
@@ -19,16 +20,32 @@ export default (props) => {
    return (
     <MuiThemeProvider>
      <div>
-       <AppBar
-        title="houseMate"
-        url='/'
-        style={{
-          fontFamily: 'Pacifico',
-          backgroundColor: '#e3704d'
-        }}
-        iconElementLeft={<IconButton><ActionHome /></IconButton>}/>
 
-      {props.children}
+      <View style={{
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      }}>
+
+        <View style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}>
+
+          <SocialEvents />
+          <ChoresIndex />
+          <Bills />
+        </View>
+
+        <View style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}>
+          <Messages />
+        </View>
+      </View>
      </div>
     </MuiThemeProvider>
    )
