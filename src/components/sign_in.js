@@ -1,35 +1,88 @@
-import React from 'react'
+import React from 'react';
+import TextInput from './common/text_input';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as sessionActions from '../actions/session_actions';
 
- class SignIn extends React.Component {
-   constructor(props) {
-     super(props)
-     this.state = {
-       credentials: {email: '',
-                     password: ''
-                   }
-     }
-   }
-   signInHandler(event) {
-     const field = event.target.name;
-     const credentials = this.state.credentials;
-     credentials[field] = event.target.value;
-     return this.setState({credentials: credentials});
-   }
+import { Field, reduxForm } from 'redux-form'
+import TextField from 'material-ui/TextField'
 
- render(){
+
+class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {credentials: {email: '', password: ''}}
+    this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
+  }
+
+  onChange(event) {
+    const field = event.target.name;
+    const credentials = this.state.credentials;
+    credentials[field] = event.target.value;
+    return this.setState({credentials: credentials});
+  }
+
+  onSave(event) {
+    event.preventDefault();
+    debugger;
+    this.props.actions.signInUser(this.state.credentials);
+  }
+
+  render() {
    return (
-     <div>
-     <h1>Sign In!</h1>
-     <form onSubmit={this.signInHandler}>
-     <label>email: </label>
-     <input ref='email' />
-     <label>password: </label>
-     <input type='password' ref='password'/>
-     <input type="submit"/>
-     </form>
-     </div>
-   )
- }
- }
+      <div>
+        <form>
+          <TextField
+           hintText="Email"
+           floatingLabelText="Enter Email"
+           name="email"
+           label="email"
+           value={this.state.credentials.email}
+           onChange={this.onChange}
+          /><br />
 
- module.exports = SignIn
+          <TextField
+           hintText="Password"
+           floatingLabelText="Enter Password"
+           type="password"
+           name="password"
+           label="password"
+           value={this.state.credentials.password}
+           onChange={this.onChange}
+          /><br />
+
+          <input
+            type="submit"
+            onClick={this.onSave}/>
+        </form>
+      </div>
+  );
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(sessionActions, dispatch)
+  };
+}
+
+export default connect(null, mapDispatchToProps)(SignIn)
+
+
+/*<TextInput
+  name="email"
+  label="email"
+  value={this.state.credentials.email}
+  onChange={this.onChange}/>
+
+<TextInput
+  name="password"
+  label="password"
+  type="password"
+  value={this.state.credentials.password}
+  onChange={this.onChange}/>
+
+<input
+  type="submit"
+  onClick={this.onSave}/>*/

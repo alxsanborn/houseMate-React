@@ -13,42 +13,49 @@ import { View } from 'react-native';
 import IconButton from 'material-ui/IconButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
 
+import SignIn from './sign_in';
+
 
 export default (props) => {
    return (
-      <MuiThemeProvider>
-       <div>
-         <AppBar
-          title="houseMate"
-          url='/'
-          style={{
-            fontFamily: 'Pacifico',
-            backgroundColor: '#e3704d'
-          }}
-          iconElementLeft={<IconButton><ActionHome /></IconButton>}/>
+    <MuiThemeProvider>
+     <div>
+       <AppBar
+        title="houseMate"
+        url='/'
+        style={{
+          fontFamily: 'Pacifico',
+          backgroundColor: '#e3704d'
+        }}
+        iconElementLeft={<IconButton><ActionHome /></IconButton>}/>
+
+      <View style={{
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      }}>
+
         <View style={{
           flex: 1,
-          flexDirection: 'row',
+          flexDirection: 'column',
           justifyContent: 'space-between',
         }}>
-          <View style={{
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-          }}>
-            <SocialEvents />
-            <ChoresIndex />
-            <Bills />
-          </View>
-          <View style={{
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-          }}>
-            <Messages />
-          </View>
+
+          <SocialEvents />
+          <ChoresIndex />
+          <Bills />
         </View>
-       </div>
-      </MuiThemeProvider>
+
+        <View style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}>
+          <SignIn />
+          <Messages />
+        </View>
+      </View>
+     </div>
+    </MuiThemeProvider>
    )
  }

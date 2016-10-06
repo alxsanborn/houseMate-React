@@ -16,7 +16,6 @@ class ChoreNew extends React.Component {
 
    newChoreHandler(event){
      event.preventDefault()
-     debugger
      const newChore = {
        name: this.refs.name.value,
        category: "chore",
@@ -24,7 +23,6 @@ class ChoreNew extends React.Component {
 
      this.props.actions.addEvent(newChore)
    }
-
 
 render(){
   return (

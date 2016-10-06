@@ -23,7 +23,7 @@ export function addEvent(newEventFromForm){
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({event: newEventFromForm})
-  }).then(response=>{
+  }).then(response => {
     return response.json()
   }).then(newEventPayload => {
     return newEventPayload

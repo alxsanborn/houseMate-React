@@ -4,8 +4,7 @@ import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AppBar from 'material-ui/AppBar';
 import BillNew from './bills_new'
-import {red300, red50
-} from 'material-ui/styles/colors';
+import {red300, red50} from 'material-ui/styles/colors';
 
 
 const style = {

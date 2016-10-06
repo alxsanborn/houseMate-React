@@ -7,6 +7,7 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 
 import {Provider} from 'react-redux'
+import configureStore from './store/configure_store';
 
 import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './reducers'
@@ -14,9 +15,11 @@ import ReduxPromise from 'redux-promise'
 
 import {fetchEvents} from './actions'
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-const store = createStoreWithMiddleware(rootReducer)
+// const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+// const store = createStoreWithMiddleware(rootReducer)
+// store.dispatch(fetchEvents())
 
+const store = configureStore();
 store.dispatch(fetchEvents())
 
 console.log(store.getState())
@@ -32,5 +35,4 @@ ReactDOM.render(
    routes={routes} />
    </Provider>,
   document.getElementById('root')
-
 );
