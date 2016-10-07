@@ -27,7 +27,6 @@ export default (props) => {
           <ChoresIndex />
           <Bills />
           <Messages />
-
      </div>
     </MuiThemeProvider>
     </Grid>
