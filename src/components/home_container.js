@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Grid } from 'react-flexbox-grid/lib/index';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
@@ -18,35 +19,17 @@ import SignIn from './sign_in';
 
 export default (props) => {
    return (
+    <Grid>
     <MuiThemeProvider>
      <div>
-
-      <View style={{
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-      }}>
-
-        <View style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-        }}>
 
           <SocialEvents />
           <ChoresIndex />
           <Bills />
-        </View>
-
-        <View style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-        }}>
           <Messages />
-        </View>
-      </View>
+
      </div>
     </MuiThemeProvider>
+    </Grid>
    )
  }
