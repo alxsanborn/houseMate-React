@@ -15,37 +15,27 @@ const style = {
 };
 
  class Bills extends React.Component {
-   constructor(props) {
-     super(props)
-     this.state = {
-      events: []
-     }
-   }
 
- render(){
-   return (
-     <div className='bills'>
-     <Paper style={style} zDepth={3} >
-        <AppBar title="Upcoming Bills" style={{backgroundColor: '#68B6C2'
-}}/>
-       <ul>
-          {this.props.social_events.map((event, index) =>
-            <Checkbox label={event.name}/>)}
-       </ul>
-       <ul><BillNew /></ul>
-     </Paper>
-     </div>
-   )
- }
- }
-
- function mapStateToProps(state){
-   return {
-     social_events: state.events.filter(function(event){
-       return event.category === "bill"
-     })
+   render(){
+     return (
+       <div className='bills'>
+         <Paper
+          style={style}
+          zDepth={3} >
+            <AppBar
+              title="Upcoming Bills"
+              style={{backgroundColor: '#68B6C2'}}/>
+           <ul>
+              {this.props.bills.map((event, index) =>
+                <Checkbox label={event.name}/>)}
+           </ul>
+           <ul><BillNew /></ul>
+         </Paper>
+       </div>
+     )
    }
  }
 
- const componentCreator = connect(mapStateToProps)
- export default componentCreator(Bills)
+
+
+ export default Bills

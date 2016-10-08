@@ -14,12 +14,7 @@ const style = {
 
 
 class ChoresIndex extends React.Component {
-   constructor(props) {
-     super(props)
-     this.state = {
-      chores: []
-     }
-   }
+
 
  render(){
    return (
@@ -37,13 +32,4 @@ class ChoresIndex extends React.Component {
  }
  }
 
- function mapStateToProps(state){
-   return {
-     chores: state.events.filter(function(event){
-       return event.category === "chore"
-     })
-   }
- }
-
-const componentCreator = connect(mapStateToProps)
-export default componentCreator(ChoresIndex)
+ export default ChoresIndex

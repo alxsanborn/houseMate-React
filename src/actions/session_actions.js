@@ -1,5 +1,6 @@
 import * as types from './action_types';
 import sessionApi from '../api/session_api';
+import {fetchEvents} from './index.js'
 
 export function signinSuccess() {
   return {

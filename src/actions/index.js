@@ -1,5 +1,15 @@
+// header string
+//const requestHeaders = {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
+
 export function fetchEvents(){
-  const events = fetch('http://localhost:3000/api/v1/events').then(
+  // create request
+  const request = new Request('http://localhost:3000/api/v1/events', {
+    method: 'GET',
+    headers: {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
+  });
+
+  // fetch using that request
+  const events = fetch(request).then(
     response => {
       return response.json()
     }
@@ -7,6 +17,7 @@ export function fetchEvents(){
     return eventPayload
   })
 
+  // return event type and payload
   return {
     type: 'FETCH_EVENTS',
     payload: events

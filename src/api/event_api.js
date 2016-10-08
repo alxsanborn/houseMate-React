@@ -1,9 +1,9 @@
-class EventAPI {
+class EventApi {
   static requestHeaders() {
     return {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
   }
 
-  static getAllEvents() {
+  static fetchEvents() {
     const headers = this.requestHeaders();
     const request = new Request('http://localhost:3000/api/v1/events', {
       method: 'GET',
@@ -18,3 +18,6 @@ class EventAPI {
           return error;
         });
   }
+}
+
+export default EventApi;
