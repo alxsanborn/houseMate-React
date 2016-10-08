@@ -1,5 +1,4 @@
 import React from 'react';
-// import NavBar from './nav_bar';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
@@ -12,6 +11,8 @@ import BillsIndex from './bills/bills_index'
 import { View } from 'react-native';
 import IconButton from 'material-ui/IconButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
+
+import SignIn from './sign_in';
 
 
 export default (props) => {

@@ -7,6 +7,7 @@ import AddBillForm from './bills_new'
 import {red300, red50
 } from 'material-ui/styles/colors';
 
+
 const style = {
   width: 800,
   margin: 10,
@@ -30,7 +31,9 @@ const style = {
         iconElementRight={<AddBillForm/>}/>
        <ul>
           {this.props.social_events.map((event, index) =>
-            <Checkbox label={event.name}/>)}
+            <div>
+            <Checkbox label={`${event.name} $${event.amount}`} /> 
+          </div>)}
        </ul>
        <ul><AddBillForm/></ul>
      </Paper>

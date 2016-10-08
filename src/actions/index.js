@@ -1,4 +1,6 @@
-const defaultEvents = [{id: 1, name: "Mop the floors", created_by: 1}, {id: 2, name: 'clean the bathtub', created_by: 2}]
+import EventAPI from '../api/event_api'
+import * as types from './action_types';
+
 
 export function fetchEvents(){
   const events = fetch('http://localhost:3000/api/v1/events').then(
@@ -15,6 +17,7 @@ export function fetchEvents(){
   }
 }
 
+
 export function addEvent(newEventFromForm){
   const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
     method: 'POST',
@@ -23,10 +26,24 @@ export function addEvent(newEventFromForm){
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({event: newEventFromForm})
-  }).then(response=>{
+  }).then(response => {
     return response.json()
   }).then(newEventPayload => {
     return newEventPayload
   })
   return {type: 'ADD_EVENT', payload: newEventFromApi}
 }
+
+export function deleteEventSuccess(evnt) {
+  return {type: types.DELETE_EVENT_SUCCESS, evnt}
+}
+export function deleteEvent(evnt) {
+  return function(dispatch) {
+    return EventAPI.deleteEvent(evnt).then(() => {
+      console.log(`Deleted ${evnt}`)
+      dispatch(deleteEventSuccess(evnt));
+      return;
+    }).catch(error => {
+      throw(error);
+    })
+  }}
