@@ -64,7 +64,6 @@ class HomeContainer extends React.Component {
    let chores = []
    let bills = []
    if (state.events.length > 0) {
-     debugger;
      socialEvents = state.events.filter(event => {
        return event.category === "social"
      })
