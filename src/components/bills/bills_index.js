@@ -11,7 +11,7 @@ const style = {
   display: 'inline-block',
 };
 
-const Bills = (props) => {
+const BillsIndex = (props) => {
   return (
     <div className='bills'>
       <Paper
@@ -30,4 +30,4 @@ const Bills = (props) => {
   )
 }
 
-export default Bills;
+export default BillsIndex;

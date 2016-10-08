@@ -42,7 +42,7 @@ class HomeContainer extends React.Component {
          }}>
            <SocialEvents social_events={this.props.socialEvents}/>
            <ChoresIndex chores={this.props.chores}/>
-           <Bills bills={this.props.bills}/>
+           <BillsIndex bills={this.props.bills}/>
          </View>
 
          <View style={{
