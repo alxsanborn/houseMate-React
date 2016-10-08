@@ -1,5 +1,5 @@
-// header string
-//const requestHeaders = {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
+import EventAPI from '../api/event_api'
+import * as types from './action_types';
 
 export function fetchEvents(){
   // create request
@@ -40,3 +40,18 @@ export function addEvent(newEventFromForm){
   })
   return {type: 'ADD_EVENT', payload: newEventFromApi}
 }
+
+export function deleteEventSuccess(evnt) {
+   return {type: types.DELETE_EVENT_SUCCESS, evnt}
+}
+
+export function deleteEvent(evnt) {
+   return function(dispatch) {
+     return EventAPI.deleteEvent(evnt).then(() => {
+       console.log(`Deleted ${evnt}`)
+       dispatch(deleteEventSuccess(evnt));
+       return;
+     }).catch(error => {
+       throw(error);
+     })
+   }}

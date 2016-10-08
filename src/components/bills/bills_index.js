@@ -1,8 +1,9 @@
 import React from 'react'
+// import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar'
 import Checkbox from 'material-ui/Checkbox'
-import BillNew from './bills_new'
+import AddBillForm from './bills_new'
 
 const style = {
   width: 800,
@@ -11,23 +12,31 @@ const style = {
   display: 'inline-block',
 };
 
-const BillsIndex = (props) => {
+export default class BillsIndex extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+     events: []
+    }
+  }
+
+render(){
   return (
     <div className='bills'>
-      <Paper
-       style={style}
-       zDepth={3} >
-         <AppBar
-           title="Upcoming Bills"
-           style={{backgroundColor: '#68B6C2'}}/>
-        <ul>
-           {props.bills.map((event, index) =>
-             <Checkbox label={event.name}/>)}
-        </ul>
-        <ul><BillNew /></ul>
-      </Paper>
+    <Paper style={style} zDepth={3} >
+       <AppBar title="Upcoming Bills" style={{backgroundColor: '#68B6C2'}}
+       iconElementRight={<AddBillForm/>}/>
+      <ul>
+         {this.props.bills.map((event, index) =>
+           <Checkbox label={`${event.name} $${event.amount}`}/>)}
+      </ul>
+      <ul><AddBillForm/></ul>
+    </Paper>
     </div>
   )
 }
+}
 
-export default BillsIndex;
+
+// const componentCreator = connect(mapStateToProps)
+// export default componentCreator(BillsIndex)
