@@ -109,19 +109,15 @@ module.exports = {
           })
         }
       },
-      // {
-      //   test: /\.css$/,
-      //   loader: 'style-loader!css-loader?modules=true',
-      //   include: /flexboxgrid/
-      // },
+
       //load flexboxgrid with CSS Modules otherwise
       //components from react-flexbox-grid will just have empty
       //class names
-      // {
-      //   test: /\.css$/,
-      //   loader: 'style!css?modules',
-      //   include: /flexboxgrid/
-      // },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules=true',
+        include: /flexboxgrid/
+      },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
       // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -130,8 +126,8 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style!css!postcss',
-        // include: path.join(__dirname, 'node_modules'), // oops, this also includes flexboxgrid
-        // exclude: /flexboxgrid/ //so we have to exclude it
+        include: path.join(__dirname, 'node_modules'), // oops, this also includes flexboxgrid
+        exclude: /flexboxgrid/ //so we have to exclude it
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
