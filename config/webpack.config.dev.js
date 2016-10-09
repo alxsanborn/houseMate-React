@@ -81,7 +81,7 @@ module.exports = {
       'react-native': 'react-native-web'
     }
   },
-  
+
   module: {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
@@ -99,7 +99,7 @@ module.exports = {
         include: paths.appSrc,
         loader: 'babel',
         query: {
-          
+
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/react-scripts/
           // directory for faster rebuilds. We use findCacheDir() because of:
@@ -109,6 +109,15 @@ module.exports = {
           })
         }
       },
+
+      //load flexboxgrid with CSS Modules otherwise
+      //components from react-flexbox-grid will just have empty
+      //class names
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules=true',
+        include: /flexboxgrid/
+      },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
       // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -116,7 +125,9 @@ module.exports = {
       // in development "style" loader enables hot editing of CSS.
       {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loader: 'style!css!postcss',
+        include: path.join(__dirname, 'node_modules'), // oops, this also includes flexboxgrid
+        exclude: /flexboxgrid/ //so we have to exclude it
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
@@ -146,7 +157,7 @@ module.exports = {
       }
     ]
   },
-  
+
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [
