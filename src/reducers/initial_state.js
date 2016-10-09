@@ -2,5 +2,5 @@ export default {
   users: [],
   groups: [],
   events: [],
-  session: !!sessionStorage.jwt
+  session: {status: !!sessionStorage.jwt, current_user: {}}
 }

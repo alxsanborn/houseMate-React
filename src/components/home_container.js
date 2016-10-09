@@ -60,6 +60,7 @@ class HomeContainer extends React.Component {
  }
 
  function mapStateToProps(state) {
+   debugger;
    let socialEvents = []
    let chores = []
    let bills = []
