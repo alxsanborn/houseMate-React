@@ -115,7 +115,7 @@ module.exports = {
       //class names
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader?modules=true',
+        loader: 'style!css?modules!',
         include: /flexboxgrid/
       },
       // "postcss" loader applies autoprefixer to our CSS.
@@ -126,7 +126,7 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style!css!postcss',
-        include: path.join(__dirname, 'node_modules'), // oops, this also includes flexboxgrid
+        include: /(node_modules)/, // oops, this also includes flexboxgrid
         exclude: /flexboxgrid/ //so we have to exclude it
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify

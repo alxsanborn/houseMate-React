@@ -6,7 +6,12 @@ import * as sessionActions from '../actions/session_actions';
 
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import {browserHistory} from 'react-router'
+
+
 
 
 class SignIn extends React.Component {
@@ -31,32 +36,33 @@ class SignIn extends React.Component {
 
   render() {
    return (
-      <div>
+      <Grid>
+        <Row center="md">
+        <Col >
         <form>
-          <TextField
-           hintText="Email"
-           floatingLabelText="Enter Email"
-           name="email"
-           label="email"
-           value={this.state.credentials.email}
-           onChange={this.onChange}
-          /><br />
+        <TextField
+         hintText="Email"
+         floatingLabelText="Enter Email"
+         name="email"
+         label="email"
+         value={this.state.credentials.email}
+         onChange={this.onChange}
+        /><br />
 
-          <TextField
-           hintText="Password"
-           floatingLabelText="Enter Password"
-           type="password"
-           name="password"
-           label="password"
-           value={this.state.credentials.password}
-           onChange={this.onChange}
-          /><br />
-
-          <input
-            type="submit"
-            onClick={this.onSave}/>
-        </form>
-      </div>
+        <TextField
+         hintText="Password"
+         floatingLabelText="Enter Password"
+         type="password"
+         name="password"
+         label="password"
+         value={this.state.credentials.password}
+         onChange={this.onChange}
+        /><br />
+         <RaisedButton label="Sign In" fullWidth={true} type='submit' onClick={this.onSave} primary/>
+      </form>
+        </Col>
+      </Row>
+      </Grid>
   );
   }
 }
