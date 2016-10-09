@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Grid } from 'react-flexbox-grid/lib/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import { browserHistory } from 'react-router';
@@ -34,7 +33,6 @@ import ActionHome from 'material-ui/svg-icons/action/home';
 
 export default (props) => {
    return (
-    <Grid>
     <MuiThemeProvider>
      <div>
        <AppBar
@@ -49,6 +47,5 @@ export default (props) => {
       {props.children}
      </div>
     </MuiThemeProvider>
-    </Grid>
    )
  }
