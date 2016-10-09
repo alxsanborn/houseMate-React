@@ -1,44 +1,95 @@
-import React from 'react'
+import { reduxForm, Field } from 'redux-form'
+import {TextField} from 'redux-form-material-ui'
+import React from 'react';
+
 import * as actions from '../../actions/index'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import { Field, reduxForm } from 'redux-form'
-import TextField from 'material-ui/TextField'
-import FlatButton from 'material-ui/FlatButton'
-import DatePicker from 'material-ui/DatePicker'
-import TimePicker from 'material-ui/TimePicker'
 
-class BillNew extends React.Component {
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import IconButton from 'material-ui/IconButton';
+import Add from 'material-ui/svg-icons/content/add'
+import DatePicker from 'material-ui/DatePicker'
+
+class AddBillForm extends React.Component {
   constructor(props){
-    super(props)
-     this.newBillHandler = this.newBillHandler.bind(this)
+    super(props);
+
+    this.state = {
+    open: false,
+    date: null
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDate = this.handleDate.bind(this);
+  };
+
+  handleDate(event, date){
+    this.setState({date: date})
+  }
+  handleSubmit(){
+    const newBill = {
+      name: this.refs.name.value,
+      end_time: this.state.date,
+      category: "bill",
+    }
+
+    this.refs.name.getRenderedComponent().props.input.onChange("");
+    this.handleClose()
+    this.props.actions.addEvent(newBill)
   }
 
-   newBillHandler(event){
-     event.preventDefault()
-     debugger
-     const newBill = {
-       name: this.refs.name.value,
-       category: "bill",
-     }
+  handleOpen = () => {
+    this.setState({open: true});
+  };
 
-     this.props.actions.addEvent(newBill)
-   }
+  handleClose = () => {
+    this.setState({open: false});
+  };
 
+  render() {
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={this.handleClose}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        type='submit'
+        onTouchTap={this.handleSubmit}
+      />,
+    ];
 
-render(){
-  return (
-
-    <form onSubmit={this.newBillHandler}>
-      <input ref='name'/>
-      <input type="submit" />
-    </form>
-  )
+    return (
+      <div>
+      <IconButton tooltip="Add Bill" onTouchTap={this.handleOpen}>
+        <Add color={"#FFF"}/>
+      </IconButton>
+      <Dialog
+        title="Add a Bill"
+        actions={actions}
+        modal={true}
+        open={this.state.open}>
+        <form>
+          <Field withRef={true} ref="name" name="name" component={TextField} hintText="What bill needs to be paid?" />
+         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="When is it due?" />
+        </form>
+      </Dialog>
+      </div>
+    )
+  }
 }
-}
+
+AddBillForm = reduxForm({
+  form: 'AddBillForm'
+})(AddBillForm)
+
 function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
 const componentCreator = connect(null, mapDispatchToProps)
-export default componentCreator(BillNew);
+export default componentCreator(AddBillForm);

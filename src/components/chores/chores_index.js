@@ -4,6 +4,9 @@ import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AddChoreForm from './chores_new'
 import AppBar from 'material-ui/AppBar';
+import * as actions from '../../actions/index'
+import {bindActionCreators} from 'redux'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const style = {
   width: 800,
@@ -19,7 +22,14 @@ class ChoresIndex extends React.Component {
      this.state = {
       chores: []
      }
+     this.deleteChore = this.deleteChore.bind(this)
+
    }
+
+  deleteChore(event){
+    this.props.actions.deleteEvent(event.target.id)
+    debugger;
+  }
 
  render(){
    return (
@@ -28,22 +38,23 @@ class ChoresIndex extends React.Component {
        <AppBar title="Upcoming Chores" style={{backgroundColor: '#68B6C2'}}
        iconElementRight={<AddChoreForm/>}/>
         <ul>
-           {this.props.chores.map((chore, index) =>
-             <Checkbox label={chore.name}/>)}
+           {this.props.chores.map((chore) =>
+             <div>
+             <Checkbox label={chore.name}  />
+            </div>
+          )}
         </ul>
+        <RaisedButton tooltip="Remove Chore" label="Delete" onTouchTap={this.deleteChore} />
        </Paper>
     </div>
    )
  }
  }
 
- function mapStateToProps(state){
-   return {
-     chores: state.events.filter(function(event){
-       return event.category === "chore"
-     })
-   }
+ function mapDispatchToProps(dispatch){
+   return {actions: bindActionCreators(actions, dispatch)}
  }
 
-const componentCreator = connect(mapStateToProps)
-export default componentCreator(ChoresIndex)
+
+const componentCreator = connect(null, mapDispatchToProps)
+export default componentCreator(ChoresIndex);
