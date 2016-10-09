@@ -1,11 +1,8 @@
 import React from 'react';
-import {Route, IndexRoute, browserHistory} from 'react-router'
+import {Route, IndexRoute} from 'react-router'
 
 import App from './components/app'
 import HomeContainer from './components/home_container'
-import SignIn from './components/sign_in'
-// import SignUp from './components/sign_up'
-import auth from './auth/authenticator';
 import HomePage from './components/home_page'
 
  export default (

@@ -1,10 +1,11 @@
 import * as types from './action_types';
 import sessionApi from '../api/session_api';
-import {fetchEvents} from './index.js'
 
-export function signinSuccess() {
+export function signinSuccess(response) {
+  debugger;
   return {
-    type: types.SIGN_IN_SUCCESS
+    type: types.SIGN_IN_SUCCESS,
+    current_user: response.current_user
   }
 }
 
@@ -13,8 +14,7 @@ export function signInUser(credentials) {
     return sessionApi.signin(credentials)
       .then(response => {
       sessionStorage.setItem('jwt', response.jwt);
-      //setState() to have current user here
-      dispatch(signinSuccess());
+      dispatch(signinSuccess(response));
     }).catch(error => {
       throw (error);
     });

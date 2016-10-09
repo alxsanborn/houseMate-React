@@ -23,12 +23,10 @@ class ChoresIndex extends React.Component {
       chores: []
      }
      this.deleteChore = this.deleteChore.bind(this)
-
    }
 
   deleteChore(event){
     this.props.actions.deleteEvent(event.target.id)
-    debugger;
   }
 
  render(){
@@ -41,10 +39,10 @@ class ChoresIndex extends React.Component {
            {this.props.chores.map((chore) =>
              <div>
              <Checkbox label={chore.name}  />
+            <RaisedButton tooltip="Remove Chore" label="Delete" onTouchTap={this.deleteChore} />
             </div>
           )}
         </ul>
-        <RaisedButton tooltip="Remove Chore" label="Delete" onTouchTap={this.deleteChore} />
        </Paper>
     </div>
    )
