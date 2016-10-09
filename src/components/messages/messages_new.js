@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+// import Dialog from 'material-ui/Dialog';
+// import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import Add from 'material-ui/svg-icons/content/add'
-import Paper from 'material-ui/Paper'
+// import Paper from 'material-ui/Paper'
 
 const noteStyle = {
   height: 100,

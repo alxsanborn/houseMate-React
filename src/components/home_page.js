@@ -1,8 +1,7 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import SignIn from './sign_in'
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 
