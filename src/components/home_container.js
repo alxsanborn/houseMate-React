@@ -26,7 +26,7 @@ class HomeContainer extends React.Component {
       this.props.actions.fetchEvents();
     }
   }
-}
+
   render() {
     return (
       <MuiThemeProvider>
