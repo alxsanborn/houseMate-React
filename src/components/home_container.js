@@ -5,8 +5,6 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import styles from '!style!css?modules!../styles.css';
 
 
-import { Grid } from 'react-flexbox-grid/lib/index';
-
 import * as actions from '../actions/index'
 import { bindActionCreators } from 'redux';
 
