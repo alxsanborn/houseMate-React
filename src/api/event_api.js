@@ -20,8 +20,10 @@ class EventApi {
   }
 
   static deleteEvent(selectedEvent) {
-  const request = new Request(`http://localhost:3000/api/v1/events/${selectedEvent}`, {
-    method: 'DELETE'
+    const headers = this.requestHeaders();
+    const request = new Request(`http://localhost:3000/api/v1/events/${selectedEvent}`, {
+    method: 'DELETE',
+    headers: headers
   });
 
   return fetch(request).then(response => {

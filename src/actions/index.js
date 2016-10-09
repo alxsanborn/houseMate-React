@@ -24,13 +24,13 @@ export function fetchEvents(){
   }
 }
 
-
 export function addEvent(newEventFromForm){
   const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
     },
     body: JSON.stringify({event: newEventFromForm})
   }).then(response => {

@@ -7,7 +7,6 @@ export default function sessionReducer(state = initialState.session, action) {
   switch(action.type) {
     case types.SIGN_IN_SUCCESS:
       // add current user_id to state
-      debugger;
       browserHistory.push('/home')
       return !!sessionStorage.jwt
     default:

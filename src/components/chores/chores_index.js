@@ -28,6 +28,7 @@ class ChoresIndex extends React.Component {
 
   deleteChore(event){
     this.props.actions.deleteEvent(event.target.id)
+    debugger;
   }
 
  render(){
