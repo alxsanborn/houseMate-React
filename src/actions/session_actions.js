@@ -2,7 +2,6 @@ import * as types from './action_types';
 import sessionApi from '../api/session_api';
 
 export function signinSuccess(response) {
-  debugger;
   return {
     type: types.SIGN_IN_SUCCESS,
     current_user: response.current_user

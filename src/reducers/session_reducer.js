@@ -5,7 +5,6 @@ import {browserHistory} from 'react-router';
 export default function sessionReducer(state = initialState.session, action) {
   switch(action.type) {
     case types.SIGN_IN_SUCCESS:
-      debugger;
       const newState = {status: !!sessionStorage.jwt, current_user: action.current_user}
       browserHistory.push('/home')
       return newState
