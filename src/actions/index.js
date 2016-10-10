@@ -25,11 +25,7 @@ export function fetchEvents(){
 }
 
 export function addEvent(newEventFromForm){
-<<<<<<< HEAD
-  const newEventFromApi = fetch('https://housemate-api.herokuapp.com/api/v1/events', {
-=======
   const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
->>>>>>> dev-env
     method: 'POST',
     headers: {
       'Accept': 'application/json',
