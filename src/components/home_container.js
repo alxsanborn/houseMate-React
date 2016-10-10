@@ -24,16 +24,16 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-      <Row between="md">
-        <Col md={3} >
-        <SocialEvents social_events={ this.props.socialEvents } />
-        <ChoresIndex chores={ this.props.chores } />
-        </Col>
-        <Col >
-        <BillsIndex bills={ this.props.bills } />
-        <Messages />
-        </Col>
-      </Row>
+        <Row between="md">
+          <Col md={ 3 }>
+            <SocialEvents social_events={ this.props.socialEvents } />
+            <ChoresIndex chores={ this.props.chores } />
+          </Col>
+          <Col>
+            <BillsIndex bills={ this.props.bills } />
+            <Messages />
+          </Col>
+        </Row>
       </MuiThemeProvider>
     )
   }

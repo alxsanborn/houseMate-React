@@ -20,7 +20,6 @@ class AddSocialEventForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
     this.handleChange = this.handleChange.bind(this);
   };
 

@@ -1,5 +1,5 @@
 class SessionApi {
-  static signin(credentials) {
+  static signIn(credentials) {
     const request = new Request('http://localhost:3000/api/v1/signin', {
       method: 'POST',
       headers: new Headers({
