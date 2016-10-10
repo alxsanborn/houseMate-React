@@ -5,7 +5,6 @@ class MemberApi {
 
   static getGroupMembers() {
     const headers = this.requestHeaders();
-    debugger;
     const request = new Request(`http://localhost:3000/api/v1/users/`, {
       method: 'GET',
       headers: headers

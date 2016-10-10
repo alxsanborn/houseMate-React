@@ -12,6 +12,11 @@ import ChoresIndex from './chores/chores_index'
 import Messages from './messages/messages_index'
 import BillsIndex from './bills/bills_index'
 
+const style = {
+  box: {
+    padding: '10px'
+  }
+}
 
 
 class HomeContainer extends React.Component {
@@ -29,16 +34,26 @@ class HomeContainer extends React.Component {
 
   render() {
     return (
-      <Row>
-        <Col md>
-            <SocialEvents social_events={ this.props.socialEvents } />
-            <ChoresIndex chores={ this.props.chores }  group_members={this.props.groupMembers} />
-            <BillsIndex bills={ this.props.bills } />
-        </Col>
-        <Col md>
-          <Messages messages={ this.props.messages }/>
-      </Col>
-      </Row>
+      <Grid>
+          <Row>
+            <Col md>
+              <div style={style.box}>
+                <SocialEvents social_events={ this.props.socialEvents }/>
+              </div>
+            <div style={style.box}>
+                <ChoresIndex chores={ this.props.chores }  group_members={this.props.groupMembers} />
+            </div>
+            <div style={style.box}>
+              <BillsIndex bills={ this.props.bills } />
+            </div>
+          </Col>
+          <Col md>
+            <div style={style.box}>
+              <Messages messages={ this.props.messages }/>
+            </div>
+          </Col>
+          </Row>
+    </Grid>
     )
   }
 }

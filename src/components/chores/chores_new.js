@@ -22,7 +22,6 @@ class AddChoreForm extends React.Component {
     date: null,
     time: null,
     }
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleTime = this.handleTime.bind(this);
