@@ -1,6 +1,7 @@
 import EventAPI from '../api/event_api'
 import MessageApi from '../api/message_api';
 import * as types from './action_types';
+import MemberApi from '../api/member_api'
 
 //MESSAGES
 
@@ -31,6 +32,28 @@ export function addMessage(newMessageFromForm){
     });
   };
 }
+
+//MEMBERS
+
+export function fetchGroupMembersSuccess(response) {
+  return {
+    type: types.FETCH_MEMBERS,
+    payload: response
+  }
+}
+
+export function fetchGroupMembers() {
+  return function(dispatch) {
+    return MemberApi.getGroupMembers()
+      .then(response => {
+          return dispatch(fetchGroupMembersSuccess(response));
+        })
+      .catch(error => {
+        throw (error);
+    });
+  };
+};
+
 
 //EVENTS
 
@@ -74,6 +97,20 @@ export function addEvent(newEventFromForm){
   })
   return {type: 'ADD_EVENT', payload: newEventFromApi}
 }
+
+
+export function editEventSuccess(evnt) {
+  return {type: types.EDIT_EVENT_SUCCESS, evnt}
+}
+
+export function editEvent(evnt){
+  return function(dispatch){
+    return EventAPI.editEvent(evnt).then(responseEvent =>{
+      dispatch(editEventSuccess(responseEvent));
+    }).catch(error => {
+      throw(error);
+    })
+  }}
 
 export function deleteEventSuccess(evnt) {
    return {type: types.DELETE_EVENT_SUCCESS, evnt}

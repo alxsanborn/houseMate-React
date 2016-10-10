@@ -23,6 +23,8 @@ class HomeContainer extends React.Component {
     if (this.props.messages.length == 0) {
       this.props.actions.loadMessages();
     }
+
+    this.props.actions.fetchGroupMembers();
   }
 
   render() {
@@ -30,7 +32,7 @@ class HomeContainer extends React.Component {
       <Row>
         <Col md>
             <SocialEvents social_events={ this.props.socialEvents } />
-            <ChoresIndex chores={ this.props.chores } />
+            <ChoresIndex chores={ this.props.chores }  group_members={this.props.groupMembers} />
             <BillsIndex bills={ this.props.bills } />
         </Col>
         <Col md>
@@ -42,6 +44,7 @@ class HomeContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
+  let groupMembers = []
   let socialEvents = []
   let chores = []
   let bills = []
@@ -63,7 +66,10 @@ function mapStateToProps(state) {
     messages = state.messages
   }
 
+  groupMembers = state.members
+
   return {
+    groupMembers: groupMembers,
     socialEvents: socialEvents,
     chores: chores,
     bills: bills,

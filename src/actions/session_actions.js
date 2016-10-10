@@ -1,5 +1,5 @@
 import * as types from './action_types';
-import sessionApi from '../api/session_api';
+import SessionApi from '../api/session_api';
 // import Auth from '../auth/authenticator'
 
 
@@ -7,6 +7,7 @@ import sessionApi from '../api/session_api';
 
 
 export function signInSuccess(response) {
+  debugger;
   return {
     type: types.SIGN_IN_SUCCESS,
     current_user: response.current_user
@@ -24,13 +25,14 @@ export function signInFailure(response) {
 
 export function signInUser(credentials) {
   return function(dispatch) {
-    return sessionApi.signIn(credentials)
+    return SessionApi.signIn(credentials)
       .then(response => {
+        debugger;
         if (response.jwt.length >= 0) {
           sessionStorage.setItem('jwt', response.jwt);
-          dispatch(signInSuccess(response));
+          return dispatch(signInSuccess(response));
         } else {
-          dispatch(signInFailure(response));
+          return dispatch(signInFailure(response));
         }
     }).catch(error => {
         throw (error);
