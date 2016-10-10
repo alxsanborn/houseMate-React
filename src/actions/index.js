@@ -18,14 +18,14 @@ export function loadMessages() {
   };
 }
 
-export function addMessageSuccess(messages) {
-  return {type: 'ADD_MESSAGE_SUCCESS', messages};
+export function addMessageSuccess(message) {
+  return {type: 'ADD_MESSAGE_SUCCESS', payload: message};
 }
 
 export function addMessage(newMessageFromForm){
   return function(dispatch) {
-    return MessageApi.addMessage(newMessageFromForm).then(messages => {
-      dispatch(addMessageSuccess(messages));
+    return MessageApi.addMessage(newMessageFromForm).then(message => {
+      dispatch(addMessageSuccess(message));
     }).catch(error => {
       throw(error);
     });
@@ -58,6 +58,7 @@ export function fetchEvents(){
 }
 
 export function addEvent(newEventFromForm){
+  debugger;
   const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
     method: 'POST',
     headers: {

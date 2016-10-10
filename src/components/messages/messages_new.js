@@ -26,13 +26,13 @@ class AddMessageForm extends React.Component {
   };
 
   handleSubmit(){
-    debugger;
     const newMessage = {
       content: this.refs.content.value,
     }
     this.refs.content.getRenderedComponent().props.input.onChange("");
 
     this.props.actions.addMessage(newMessage)
+    this.handleClose();
   }
 
   handleInputChange(event){
