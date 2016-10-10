@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import * as sessionActions from '../actions/session_actions'
+import {Link} from 'react-router';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { AppRegistry, View, Image } from 'react-native';
 
 import SignIn from './sign_in'
 import Auth from '../auth/authenticator'
@@ -24,7 +26,22 @@ class HomePage extends React.Component {
    return (
     <MuiThemeProvider>
      <div>
-        { this.checkSignedIn() ? 'SPLASH PAGE GOES HERE -- CAN ONLY BE SEEN WHEN SIGNED IN' : <SignIn />}
+        { this.checkSignedIn() ? (
+          <div style={{position: 'relative'}}>
+            <Link to="/home"><h1
+              style={{
+                position: 'absolute',
+                zIndex: 1,
+                fontFamily: 'Pacifico',
+                fontSize: '50px',
+                color: 'white',
+                top: '20px',
+                left: '330px'
+              }}>Visit Your Household</h1></Link>
+            <Image      source={require('../../public/house.jpg')}
+              style={{}} />
+          </div>
+        ) : <SignIn />}
      </div>
     </MuiThemeProvider>
    )
