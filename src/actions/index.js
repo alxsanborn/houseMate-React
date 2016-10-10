@@ -1,6 +1,30 @@
 import EventAPI from '../api/event_api'
 import * as types from './action_types';
+import MemberApi from '../api/member_api'
 
+
+
+export function fetchGroupMembersSuccess(response) {
+  return {
+    type: types.FETCH_MEMBERS,
+    payload: response
+  }
+}
+
+export function fetchGroupMembers() {
+  return function(dispatch) {
+    return MemberApi.getGroupMembers()
+      .then(response => {
+          return dispatch(fetchGroupMembersSuccess(response));
+        })
+      .catch(error => {
+        throw (error);
+    });
+  };
+};
+
+
+//////////////////////////////////////////////////////////////
 export function fetchEvents(){
   // create request
   const request = new Request('http://localhost:3000/api/v1/events', {
