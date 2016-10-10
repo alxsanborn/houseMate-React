@@ -5,7 +5,7 @@ class EventApi {
 
   static fetchEvents() {
     const headers = this.requestHeaders();
-    const request = new Request('http://localhost:3000/api/v1/events', {
+    const request = new Request('http:housemate-api.herokuapp.com/api/v1/events', {
       method: 'GET',
       headers: headers
     });
@@ -21,7 +21,7 @@ class EventApi {
 
   static deleteEvent(selectedEvent) {
     const headers = this.requestHeaders();
-    const request = new Request(`http://localhost:3000/api/v1/events/${selectedEvent}`, {
+    const request = new Request(`http:housemate-api.herokuapp.com/api/v1/events/${selectedEvent}`, {
     method: 'DELETE',
     headers: headers
   });
