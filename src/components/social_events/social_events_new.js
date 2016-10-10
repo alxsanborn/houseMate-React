@@ -38,7 +38,7 @@ class AddSocialEventForm extends React.Component {
     const newSocialEvent = {
       name: this.refs.name.value,
       end_time: this.state.date,
-      category: "chore",
+      category: "social",
     }
 
     this.refs.name.getRenderedComponent().props.input.onChange("");
