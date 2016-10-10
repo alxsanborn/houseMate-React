@@ -1,5 +1,5 @@
 import * as types from './action_types';
-import sessionApi from '../api/session_api';
+import SessionApi from '../api/session_api';
 // import Auth from '../auth/authenticator'
 
 
@@ -24,7 +24,7 @@ export function signInFailure(response) {
 
 export function signInUser(credentials) {
   return function(dispatch) {
-    return sessionApi.signIn(credentials)
+    return SessionApi.signIn(credentials)
       .then(response => {
         if (response.jwt.length >= 0) {
           sessionStorage.setItem('jwt', response.jwt);

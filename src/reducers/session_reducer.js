@@ -7,10 +7,11 @@ export default function sessionReducer(state = initialState.session, action) {
   switch(action.type) {
     case types.SIGN_IN_SUCCESS:
       browserHistory.push('/home')
-      return { status: !!sessionStorage.jwt, current_user: action.current_user }
+      debugger
+      return {...state, status: !!sessionStorage.jwt, current_user: action.current_user }
     case types.SIGN_OUT_SUCCESS:
       Auth.signOut()
-      return { status: !!sessionStorage.jwt, current_user: action.current_user}
+      return {...state, status: !!sessionStorage.jwt, current_user: action.current_user}
     default:
       return state;
   }

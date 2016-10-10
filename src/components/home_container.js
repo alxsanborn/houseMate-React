@@ -19,6 +19,8 @@ class HomeContainer extends React.Component {
     if (this.props.socialEvents.length <= 0) {
       this.props.actions.fetchEvents();
     }
+    debugger
+    this.props.actions.fetchGroupMembers();
   }
 
   render() {
@@ -26,7 +28,7 @@ class HomeContainer extends React.Component {
       <Row>
         <Col md>
             <SocialEvents social_events={ this.props.socialEvents } />
-            <ChoresIndex chores={ this.props.chores } />
+            <ChoresIndex chores={ this.props.chores } group_members={this.props.groupMembers} />
             <BillsIndex bills={ this.props.bills } />
         </Col>
         <Col md>
@@ -38,6 +40,8 @@ class HomeContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
+  debugger;
+  let groupMembers = []
   let socialEvents = []
   let chores = []
   let bills = []
@@ -54,7 +58,16 @@ function mapStateToProps(state) {
       return event.category === "bill"
     })
   }
+
+  if (state.members.length > 0) {
+    debugger;
+    groupMembers = state.members.filter(member => {
+      return member.group_id === state.session.current_user.group_id
+    })
+  }
+
   return {
+    groupMembers: groupMembers,
     socialEvents: socialEvents,
     chores: chores,
     bills: bills

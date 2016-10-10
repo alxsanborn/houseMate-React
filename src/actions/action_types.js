@@ -7,4 +7,5 @@ export const ADD_EVENT = 'ADD_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
 
+export const FETCH_MEMBERS = 'FETCH_MEMBERS'
 
