@@ -20,11 +20,11 @@ import BillsIndex from './bills/bills_index'
 
 class HomeContainer extends React.Component {
   componentWillMount() {
-    if (this.props.socialEvents.length <= 0) {
+    if (this.props.socialEvents.length == 0) {
       this.props.actions.fetchEvents();
     }
 
-    if (this.props.messages.length <= 0) {
+    if (this.props.messages.length == 0) {
       this.props.actions.loadMessages();
     }
   }
@@ -39,7 +39,7 @@ class HomeContainer extends React.Component {
         </Col>
         <Col >
         <BillsIndex bills={ this.props.bills } />
-        <Messages />
+        <Messages messages={ this.props.messages }/>
         </Col>
       </Row>
       </MuiThemeProvider>
@@ -63,7 +63,10 @@ class HomeContainer extends React.Component {
     bills = state.events.filter(event => {
       return event.category === "bill"
     })
+
+    messages = state.messages
   }
+
   return {
     socialEvents: socialEvents,
     chores: chores,

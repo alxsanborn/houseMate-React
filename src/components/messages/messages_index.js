@@ -12,7 +12,7 @@ const style = {
   display: 'inline-block',
 };
 
-const noteStyle = {
+const noteStyle1 = {
   height: 200,
   width: 200,
   margin: 20,
@@ -56,7 +56,9 @@ const noteStyle3 = {
      this.state = {
       messages: []
      }
+
    }
+
 
 
  render(){
@@ -65,16 +67,19 @@ const noteStyle3 = {
      <Paper style={style} zDepth={3} >
       <AppBar title="Message Board" style={{backgroundColor: '#68B6C2'}}
       iconElementRight={<AddMessageForm/>}/>
-      <Paper style={noteStyle} zDepth={1}>
-        {`I fed the cat!
-          -- Alice`}
-      </Paper>
-      <Paper style={noteStyle2} zDepth={1}>
-        {`Trash Pick-Up is Tuesdays, Thursdays and Sundays`}
-      </Paper>
-      <Paper style={noteStyle3} zDepth={1}>
-        {`leftover lasagna up for grabs in the fridge!`}
-      </Paper>
+
+      {this.props.messages.map((message, index) =>
+        index == 0 ? <Paper style={noteStyle1} zDepth={1}>{message.content}</Paper> : false
+      )}
+
+      {this.props.messages.map((message, index) =>
+        (index == 1 ? <Paper style={noteStyle2} zDepth={1}>{message.content}</Paper> : false)
+      )}
+
+      {this.props.messages.map((message, index) =>
+        (index == 2 ? <Paper style={noteStyle3} zDepth={1}>{message.content}</Paper> : false)
+      )}
+
      </Paper>
      </div>
    )

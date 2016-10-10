@@ -3,8 +3,7 @@ import initialState from './initial_state';
 
 export default function messagesReducer(state = initialState.messages, action) {
   switch(action.type) {
-    case types.FETCH_MESSAGES_SUCCESS:
-      debugger;
+    case 'FETCH_MESSAGES_SUCCESS':
       return action.messages
     default:
       return state;

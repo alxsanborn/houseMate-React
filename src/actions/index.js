@@ -3,7 +3,7 @@ import MessageApi from '../api/message_api';
 import * as types from './action_types';
 
 export function loadMessagesSuccess(messages) {
-  return {type: types.FETCH_MESSAGES_SUCCESS, messages};
+  return {type: 'FETCH_MESSAGES_SUCCESS', messages};
 }
 
 export function loadMessages() {
