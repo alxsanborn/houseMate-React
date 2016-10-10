@@ -1,8 +1,39 @@
 import EventAPI from '../api/event_api'
+import MessageApi from '../api/message_api';
 import * as types from './action_types';
 import MemberApi from '../api/member_api'
 
+//MESSAGES
 
+export function loadMessagesSuccess(messages) {
+  return {type: 'FETCH_MESSAGES_SUCCESS', messages};
+}
+
+export function loadMessages() {
+  return function(dispatch) {
+    return MessageApi.fetchMessages().then(messages => {
+      dispatch(loadMessagesSuccess(messages));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+export function addMessageSuccess(message) {
+  return {type: 'ADD_MESSAGE_SUCCESS', payload: message};
+}
+
+export function addMessage(newMessageFromForm){
+  return function(dispatch) {
+    return MessageApi.addMessage(newMessageFromForm).then(message => {
+      dispatch(addMessageSuccess(message));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
+//MEMBERS
 
 export function fetchGroupMembersSuccess(response) {
   return {
@@ -24,7 +55,8 @@ export function fetchGroupMembers() {
 };
 
 
-//////////////////////////////////////////////////////////////
+//EVENTS
+
 export function fetchEvents(){
   // create request
   const request = new Request('http://localhost:3000/api/v1/events', {
@@ -49,6 +81,7 @@ export function fetchEvents(){
 }
 
 export function addEvent(newEventFromForm){
+  debugger;
   const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
     method: 'POST',
     headers: {

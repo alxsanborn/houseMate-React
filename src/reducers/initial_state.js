@@ -1,5 +1,6 @@
 export default {
   members: [],
   events: [],
-  session: {status: !!sessionStorage.jwt, current_user: {} }
+  messages: [],
+  session: {status: !!sessionStorage.jwt, current_user: {}}
 }

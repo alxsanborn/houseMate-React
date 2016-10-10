@@ -16,9 +16,14 @@ import BillsIndex from './bills/bills_index'
 
 class HomeContainer extends React.Component {
   componentWillMount() {
-    if (this.props.socialEvents.length <= 0) {
+    if (this.props.socialEvents.length == 0) {
       this.props.actions.fetchEvents();
     }
+
+    if (this.props.messages.length == 0) {
+      this.props.actions.loadMessages();
+    }
+
     this.props.actions.fetchGroupMembers();
   }
 
@@ -31,7 +36,7 @@ class HomeContainer extends React.Component {
             <BillsIndex bills={ this.props.bills } />
         </Col>
         <Col md>
-          <Messages />
+          <Messages messages={ this.props.messages }/>
       </Col>
       </Row>
     )
@@ -43,6 +48,8 @@ function mapStateToProps(state) {
   let socialEvents = []
   let chores = []
   let bills = []
+  let messages = []
+
   if (state.events.length > 0) {
     socialEvents = state.events.filter(event => {
       return event.category === "social"
@@ -55,18 +62,18 @@ function mapStateToProps(state) {
     bills = state.events.filter(event => {
       return event.category === "bill"
     })
+
+    messages = state.messages
   }
 
-  debugger;
-
   groupMembers = state.members
-
 
   return {
     groupMembers: groupMembers,
     socialEvents: socialEvents,
     chores: chores,
-    bills: bills
+    bills: bills,
+    messages: messages
   }
 }
 
