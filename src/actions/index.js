@@ -15,8 +15,7 @@ export function fetchGroupMembers() {
   return function(dispatch) {
     return MemberApi.getGroupMembers()
       .then(response => {
-          debugger;
-          dispatch(fetchGroupMembersSuccess(response));
+          return dispatch(fetchGroupMembersSuccess(response));
         })
       .catch(error => {
         throw (error);
@@ -24,6 +23,8 @@ export function fetchGroupMembers() {
   };
 };
 
+
+//////////////////////////////////////////////////////////////
 export function fetchEvents(){
   // create request
   const request = new Request('http://localhost:3000/api/v1/events', {

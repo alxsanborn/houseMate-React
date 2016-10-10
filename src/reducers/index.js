@@ -7,8 +7,9 @@ import {reducer as formReducer} from 'redux-form'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  events: eventsReducer,
+  // group: groupReducer,
   members: membersReducer,
+  events: eventsReducer,
   form: formReducer
 })
 

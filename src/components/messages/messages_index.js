@@ -65,6 +65,7 @@ const noteStyle3 = {
      <Paper style={style} zDepth={3} >
       <AppBar title="Message Board" style={{backgroundColor: '#68B6C2'}}
       iconElementRight={<AddMessageForm/>}/>
+
       <Paper style={noteStyle} zDepth={1}>
         {`I fed the cat!
           -- Alice`}
