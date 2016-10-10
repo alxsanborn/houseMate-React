@@ -16,9 +16,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
 const store = configureStore();
-
 console.log(store.getState());
-
 
 injectTapEventPlugin();
 ReactDOM.render(
@@ -27,3 +25,5 @@ ReactDOM.render(
     </Provider>,
   document.getElementById('root')
 );
+
+
