@@ -9,9 +9,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 
-
-
-
 class SignIn extends React.Component {
   constructor(props) {
     super(props);

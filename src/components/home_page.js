@@ -10,7 +10,6 @@ export default (props) => {
     <MuiThemeProvider>
      <div>
         {!!sessionStorage.jwt ? 'visit your household!' : <SignIn />}
-
      </div>
     </MuiThemeProvider>
    )

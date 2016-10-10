@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AppBar from 'material-ui/AppBar';
