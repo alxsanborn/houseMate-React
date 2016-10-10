@@ -23,6 +23,10 @@ class HomeContainer extends React.Component {
     if (this.props.socialEvents.length <= 0) {
       this.props.actions.fetchEvents();
     }
+
+    if (this.props.messages.length <= 0) {
+      this.props.actions.loadMessages();
+    }
   }
 
   render() {
@@ -63,7 +67,8 @@ class HomeContainer extends React.Component {
   return {
     socialEvents: socialEvents,
     chores: chores,
-    bills: bills
+    bills: bills,
+    messages: messages
   }
 }
 

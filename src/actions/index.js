@@ -1,5 +1,20 @@
 import EventAPI from '../api/event_api'
+import MessageApi from '../api/message_api';
 import * as types from './action_types';
+
+export function loadMessagesSuccess(messages) {
+  return {type: types.FETCH_MESSAGES_SUCCESS, messages};
+}
+
+export function loadMessages() {
+  return function(dispatch) {
+    return MessageApi.fetchMessages().then(messages => {
+      dispatch(loadMessagesSuccess(messages));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
 
 export function fetchEvents(){
   // create request
