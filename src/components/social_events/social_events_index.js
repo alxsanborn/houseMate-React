@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox'
 import AppBar from 'material-ui/AppBar';

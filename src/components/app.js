@@ -6,30 +6,32 @@ import { browserHistory } from 'react-router';
 
 
 import IconButton from 'material-ui/IconButton';
+import FlatButton from 'material-ui/FlatButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
 
-
-  function handleLeftIconClick(event){
-
+  function handleTouchTap(event){
     event.preventDefault()
-    debugger;
+    browserHistory.push('/')
+  }
+
+  function handleLogoClick(event){
+    event.preventDefault()
     browserHistory.push('/home')
   }
 
-  function handleTouchTap(event){
-
+  function handleSignoutClick(event){
     event.preventDefault()
-    debugger;
+    sessionStorage.removeItem("jwt")
     browserHistory.push('/')
   }
+
+
 
   const styles = {
     title: {
       cursor: 'pointer',
     }
   }
-
-
 
 export default (props) => {
    return (
@@ -42,10 +44,17 @@ export default (props) => {
           fontFamily: 'Pacifico',
           backgroundColor: '#e3704d'
         }}
-        iconElementLeft={<IconButton onClick={handleLeftIconClick} > <ActionHome  /> </IconButton>}
+        iconElementLeft={<IconButton onClick={handleLogoClick}> <ActionHome style={{color: "white"}}  /> </IconButton>}
+        iconElementRight={!!sessionStorage.jwt ? <FlatButton label="Sign Out" fullWidth={true} onClick={handleSignoutClick} /> : '' }
        />
       {props.children}
      </div>
     </MuiThemeProvider>
    )
  }
+
+
+
+
+
+

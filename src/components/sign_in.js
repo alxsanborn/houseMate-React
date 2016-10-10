@@ -3,13 +3,11 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as sessionActions from '../actions/session_actions';
 
-
-import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import {browserHistory} from 'react-router'
+
 
 
 
