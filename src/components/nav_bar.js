@@ -46,7 +46,6 @@ class NavBar extends React.Component {
 
   render() {
    return (
-    <MuiThemeProvider>
     <div>
        <AppBar
         title={<span style={style.title}>houseMate</span>}
@@ -59,7 +58,6 @@ class NavBar extends React.Component {
         iconElementRight={ this.props.session ? <FlatButton label="Sign Out" style={{color: "white"}} onTouchTap={this.handleSignOutClick} /> : <div />}
        />
      </div>
-   </MuiThemeProvider>
    )
  }
 }

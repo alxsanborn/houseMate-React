@@ -6,12 +6,12 @@ import * as actions from '../actions/index'
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styles from '!style!css?modules!../styles.css';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import SocialEvents from './social_events/social_events_index'
 import ChoresIndex from './chores/chores_index'
 import Messages from './messages/messages_index'
 import BillsIndex from './bills/bills_index'
+
 
 
 class HomeContainer extends React.Component {
@@ -23,18 +23,16 @@ class HomeContainer extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <Row between="md">
-          <Col md={ 3 }>
+      <Row>
+        <Col md>
             <SocialEvents social_events={ this.props.socialEvents } />
             <ChoresIndex chores={ this.props.chores } />
-          </Col>
-          <Col>
             <BillsIndex bills={ this.props.bills } />
-            <Messages />
-          </Col>
-        </Row>
-      </MuiThemeProvider>
+        </Col>
+        <Col md>
+          <Messages />
+      </Col>
+      </Row>
     )
   }
 }
