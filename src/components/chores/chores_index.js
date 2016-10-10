@@ -57,6 +57,7 @@ class ChoresIndex extends React.Component {
                id={chore.id}
                checked={chore.status === 'complete'}
                onCheck={this.selectChore}/>
+                <RaisedButton tooltip="Remove Chore" name={chore.id} label="Delete" onTouchTap={this.deleteChore} />
             </div>
             )}
         </ul>
@@ -70,7 +71,7 @@ class ChoresIndex extends React.Component {
  // ChoresIndex = reduxForm({
  //   form: 'EditChoreForm'
  // })(ChoresIndex)
- // <RaisedButton tooltip="Remove Chore" name={chore.id} label="Delete" onTouchTap={this.deleteChore} />
+
  // </div>
 
  function mapDispatchToProps(dispatch){
