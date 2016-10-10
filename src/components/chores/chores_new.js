@@ -11,39 +11,41 @@ import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import Add from 'material-ui/svg-icons/content/add'
 import DatePicker from 'material-ui/DatePicker'
+import TimePicker from 'material-ui/TimePicker';
 
 class AddChoreForm extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
-    open: false
+    open: false,
+    date: null,
+    time: null,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
-    this.handleNameChange = this.handleNameChange.bind(this, 'name');
-    this.handleDateChange = this.handleDateChange.bind(this, 'end_time')
+    this.handleDate = this.handleDate.bind(this);
+    this.handleTime = this.handleTime.bind(this);
   };
 
+  handleTime(event, time){
+    this.setState({time: time})
+  }
+  handleDate(event, date){
+    this.setState({date: date})
+  }
   handleSubmit(){
     const newChore = {
       name: this.refs.name.value,
-      end_time: this.refs.end_time.value,
-      category: "chore"
+      end_time: this.state.date,
+      category: "chore",
     }
-    this.refs.name.getRenderedComponent().props.input.onChange("");
 
+    this.refs.name.getRenderedComponent().props.input.onChange("");
+    this.handleClose()
     this.props.actions.addEvent(newChore)
   }
 
-  handleNameChange(event){
-    this.refs.name.getRenderedComponent().props.input.onChange(event.target.value);
-  }
-
-  handleDateChange(event){
-    this.refs.end_time.getRenderedComponent().props.input.onChange(event.target.value);
-  }
 
   handleOpen = () => {
     this.setState({open: true});
@@ -80,8 +82,9 @@ class AddChoreForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-          <Field withRef={true} ref="name" component={TextField} hintText="What chore needs to be completed?" onChange={this.handleNameChange} value={this.state.name}/>
-          <Field withRef={true} ref="end_time" component={DatePicker} hintText="Time?" onChange={this.handleDateChange} value={this.state.end_time}/>
+          <Field withRef={true} ref="name" name="name" component={TextField} hintText="What chore needs to be completed?" />
+         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="Date deadline" />
+          <Field withRef={true} ref="time" name="time" component={TimePicker} onChange={this.handleDate} hintText="Time deadline" />
         </form>
       </Dialog>
       </div>
@@ -99,6 +102,8 @@ function mapDispatchToProps(dispatch){
 
 const componentCreator = connect(null, mapDispatchToProps)
 export default componentCreator(AddChoreForm);
+
+
 
 
 // import React from 'react';

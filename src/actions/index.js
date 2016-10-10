@@ -65,6 +65,20 @@ export function addEvent(newEventFromForm){
   return {type: 'ADD_EVENT', payload: newEventFromApi}
 }
 
+
+export function editEventSuccess(evnt) {
+  return {type: types.EDIT_EVENT_SUCCESS, evnt}
+}
+
+export function editEvent(evnt){
+  return function(dispatch){
+    return EventAPI.editEvent(evnt).then(responseEvent =>{
+      dispatch(editEventSuccess(responseEvent));
+    }).catch(error => {
+      throw(error);
+    })
+  }}
+
 export function deleteEventSuccess(evnt) {
    return {type: types.DELETE_EVENT_SUCCESS, evnt}
 }
