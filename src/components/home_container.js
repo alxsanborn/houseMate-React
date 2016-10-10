@@ -47,6 +47,8 @@ function mapStateToProps(state) {
   let socialEvents = []
   let chores = []
   let bills = []
+  let messages = []
+  
   if (state.events.length > 0) {
     socialEvents = state.events.filter(event => {
       return event.category === "social"
