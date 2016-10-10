@@ -18,6 +18,20 @@ export function loadMessages() {
   };
 }
 
+export function addMessageSuccess(messages) {
+  return {type: 'ADD_MESSAGE_SUCCESS', messages};
+}
+
+export function addMessage(newMessageFromForm){
+  return function(dispatch) {
+    return MessageApi.addMessage(newMessageFromForm).then(messages => {
+      dispatch(addMessageSuccess(messages));
+    }).catch(error => {
+      throw(error);
+    });
+  };
+}
+
 //EVENTS
 
 export function fetchEvents(){
