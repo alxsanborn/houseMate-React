@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/index'
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import styles from '!style!css?modules!../styles.css';
 
-
-import * as actions from '../actions/index'
-import { bindActionCreators } from 'redux';
-
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
 
 import SocialEvents from './social_events/social_events_index'
 import ChoresIndex from './chores/chores_index'
@@ -28,23 +24,22 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-      <Row between="md">
-        <Col md={3} >
-        <SocialEvents social_events={ this.props.socialEvents } />
-        <ChoresIndex chores={ this.props.chores } />
-        </Col>
-        <Col >
-        <BillsIndex bills={ this.props.bills } />
-        <Messages />
-        </Col>
-      </Row>
+        <Row between="md">
+          <Col md={ 3 }>
+            <SocialEvents social_events={ this.props.socialEvents } />
+            <ChoresIndex chores={ this.props.chores } />
+          </Col>
+          <Col>
+            <BillsIndex bills={ this.props.bills } />
+            <Messages />
+          </Col>
+        </Row>
       </MuiThemeProvider>
     )
   }
 }
 
 function mapStateToProps(state) {
-  debugger;
   let socialEvents = []
   let chores = []
   let bills = []

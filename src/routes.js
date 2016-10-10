@@ -13,14 +13,10 @@ import HomePage from './components/home_page'
     </Route>
    </div>
  )
-//Don't nest navbar links in App
-//
-
 
 
  function requireAuth(nextState, replace) {
-
-  if (!sessionStorage.jwt) {
+  if (sessionStorage.jwt === undefined) {
     replace({
       pathname: '/',
       state: { nextPathname: nextState.location.pathname }
