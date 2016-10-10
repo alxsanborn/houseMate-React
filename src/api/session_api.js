@@ -1,6 +1,6 @@
 class SessionApi {
   static signin(credentials) {
-    const request = new Request('https://housemate-api.herokuapp.com/api/v1/signin', {
+    const request = new Request('http://localhost:3000/api/v1/signin', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json'

@@ -19,7 +19,6 @@ import HomePage from './components/home_page'
 
 
  function requireAuth(nextState, replace) {
-
   if (!sessionStorage.jwt) {
     replace({
       pathname: '/',

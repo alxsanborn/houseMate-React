@@ -6,13 +6,13 @@ import IconButton from 'material-ui/IconButton';
 import Add from 'material-ui/svg-icons/content/add'
 // import Paper from 'material-ui/Paper'
 
-const noteStyle = {
-  height: 100,
-  width: 100,
-  margin: 20,
-  textAlign: 'center',
-  display: 'inline-block',
-};
+// const noteStyle = {
+//   height: 100,
+//   width: 100,
+//   margin: 20,
+//   textAlign: 'center',
+//   display: 'inline-block',
+// };
 
 class AddMessageForm extends React.Component {
   constructor(props){
