@@ -7,6 +7,8 @@ export default function eventsReducer(state=[], action){
       return action.payload;
     case 'ADD_EVENT':
     return [...state, action.payload];
+    case types.EDIT_EVENT_SUCCESS:
+      return [...state.filter(evnt => evnt.id !== action.evnt.id), Object.assign({}, action.evnt)];
     case types.DELETE_EVENT_SUCCESS:
       const newState = Object.assign([], state);
       const indexOfEventToDelete = state.findIndex(evnt => {

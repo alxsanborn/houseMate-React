@@ -23,7 +23,20 @@ class ChoresIndex extends React.Component {
       chores: []
      }
      this.deleteChore = this.deleteChore.bind(this)
+     this.selectChore = this.selectChore.bind(this)
    }
+
+  selectChore(event){
+  //debugger
+  const completeChore = {
+    id: this.refs.chore.props.id,
+    name: this.refs.chore.props.label,
+    category: 'chore',
+    status: "complete"
+    }
+  //  debugger
+  this.props.actions.editEvent(completeChore)
+  }
 
   deleteChore(event){
     this.props.actions.deleteEvent(event.target.id)
@@ -38,8 +51,7 @@ class ChoresIndex extends React.Component {
         <ul>
            {this.props.chores.map((chore) =>
              <div>
-             <Checkbox label={chore.name}  />
-            <RaisedButton tooltip="Remove Chore" label="Delete" onTouchTap={this.deleteChore} />
+             <Checkbox label={chore.name} id={chore.id} checked={chore.status === 'complete'} onCheck={this.selectChore} withRef={true} ref={`chore`}/>
             </div>
           )}
         </ul>
