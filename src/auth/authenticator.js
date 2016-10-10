@@ -1,3 +1,6 @@
+import {browserHistory} from 'react-router';
+
+
 class Auth {
   static signedIn() {
     return !!sessionStorage.jwt;
@@ -5,6 +8,7 @@ class Auth {
 
   static signOut() {
     sessionStorage.removeItem('jwt');
+    browserHistory.push('/')
   }
 }
 

@@ -12,25 +12,32 @@ const style = {
   display: 'inline-block',
 };
 
- class SocialEvents extends React.Component {
-   render(){
-     return (
-       <div className='social-events'>
-         <Paper style={style} zDepth={3} >
-            <AppBar
-              title="Upcoming Social Events"
-              style={{backgroundColor: '#68B6C2'}} iconElementRight={<AddSocialEventForm/>} />
-           <ul>
-              {this.props.social_events.map((event, index) =>
-                <Checkbox label={`${event.name} | ${Moment(event.start_time).format('dddd')}`}/>)}
-           </ul>
-           <ul><AddSocialEventForm/></ul>
-         </Paper>
-       </div>
-     )
-   }
- }
+class SocialEvents extends React.Component {
+  render() {
+    return (
+      <div className='social-events'>
+        <Paper style={style} zDepth={3}>
+
+          <AppBar
+            title="Upcoming Social Events"
+            style={ { backgroundColor: '#68B6C2' } }
+            iconElementRight={ <AddSocialEventForm/> }
+          />
+
+          <ul>
+            {this.props.social_events.map( (event, index) => <Checkbox label={ `${event.name} | ${Moment(event.start_time).format('dddd')}` } />) }
+          </ul>
+
+          <ul>
+            <AddSocialEventForm/>
+          </ul>
+
+        </Paper>
+      </div>
+    )
+  }
+}
 
 
 
- export default SocialEvents;
+export default SocialEvents;

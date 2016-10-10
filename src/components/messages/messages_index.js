@@ -53,13 +53,36 @@ const noteStyle3 = {
  class Messages extends React.Component {
    constructor(props) {
      super(props)
+
      this.state = {
       messages: []
      }
 
+     this.renderPostIts = this.renderPostIts.bind(this)
    }
 
-
+   //this can be refactored by adding the notestyle to the css files and applying an id to each postit
+   renderPostIts(){
+     return this.props.messages.map((message, index) => {
+        if (index === 0) {
+          return (
+            <Paper style={noteStyle1} zDepth={1}>
+              {message.content}
+            </Paper>)
+        } else if (index === 1) {
+          return (
+            <Paper style={noteStyle2} zDepth={1}>
+              {message.content}
+            </Paper>)
+        } else if (index === 2) {
+          return (
+            <Paper style={noteStyle3} zDepth={1}>
+              {message.content}
+            </Paper>)
+        }
+      }
+     )
+   }
 
  render(){
    return (
@@ -67,23 +90,12 @@ const noteStyle3 = {
      <Paper style={style} zDepth={3} >
       <AppBar title="Message Board" style={{backgroundColor: '#68B6C2'}}
       iconElementRight={<AddMessageForm/>}/>
-
-      {this.props.messages.map((message, index) =>
-        index == 0 ? <Paper style={noteStyle1} zDepth={1}>{message.content}</Paper> : false
-      )}
-
-      {this.props.messages.map((message, index) =>
-        (index == 1 ? <Paper style={noteStyle2} zDepth={1}>{message.content}</Paper> : false)
-      )}
-
-      {this.props.messages.map((message, index) =>
-        (index == 2 ? <Paper style={noteStyle3} zDepth={1}>{message.content}</Paper> : false)
-      )}
-
+      {this.renderPostIts()}
      </Paper>
      </div>
    )
  }
  }
+
 
  module.exports = Messages

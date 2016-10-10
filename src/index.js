@@ -16,14 +16,7 @@ import ReduxPromise from 'redux-promise'
 import {fetchEvents} from './actions'
 
 const store = configureStore();
-
-// store.dispatch(fetchEvents())
-
-console.log(store.getState())
-
-import injectTapEventPlugin from 'react-tap-event-plugin';
-// Needed for onTouchTap
-//http://stackoverflow.com/a/34015469/988941
+console.log(store.getState());
 
 injectTapEventPlugin();
 ReactDOM.render(
