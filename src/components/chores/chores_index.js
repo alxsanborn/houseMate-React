@@ -16,13 +16,6 @@ const style = {
   display: 'inline-block',
 };
 
-const choreCheckbox = ({ input, label }) => (
-  <Checkbox label={label.name}
-    checked={label.status === 'complete'}
-    onCheck={(e, checked) => label.selectChore(checked)}
-    />
-)
-
 class ChoresIndex extends React.Component {
    constructor(props) {
      super(props)
@@ -56,7 +49,7 @@ class ChoresIndex extends React.Component {
        <Paper style={style} zDepth={3} >
        <AppBar title="Upcoming Chores" style={{backgroundColor: '#68B6C2'}}
        iconElementRight={<AddChoreForm/>}/>
-
+       <ul>
         {this.props.chores.map((chore) =>
           <div>
                <Checkbox
@@ -66,6 +59,7 @@ class ChoresIndex extends React.Component {
                onCheck={this.selectChore}/>
             </div>
             )}
+        </ul>
 
        </Paper>
     </div>
