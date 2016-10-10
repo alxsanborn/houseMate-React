@@ -2,6 +2,8 @@ import EventAPI from '../api/event_api'
 import MessageApi from '../api/message_api';
 import * as types from './action_types';
 
+//MESSAGES
+
 export function loadMessagesSuccess(messages) {
   return {type: 'FETCH_MESSAGES_SUCCESS', messages};
 }
@@ -15,6 +17,8 @@ export function loadMessages() {
     });
   };
 }
+
+//EVENTS
 
 export function fetchEvents(){
   // create request
