@@ -7,5 +7,5 @@ import ReduxPromise from 'redux-promise'
 export default function configureStore() {
   return createStore(
     rootReducer,
-    applyMiddleware(thunk, ReduxPromise),
+    applyMiddleware(thunk, ReduxPromise)
 )};
