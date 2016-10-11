@@ -9,13 +9,12 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 
 ## Features
 
-- Material Design
-- Responsive Flexbox integration
+- Material Design w/ Material UI Components
+- Responsive Flexbox integration 
 - JSON Web token based user authentication
 - Rails API with PostgreSQL database
 - Routing by React-Router
 - Redux framework for implementing flux architecture
-- Moment.js backed Time and Date picking for schedules
 
 ## Demo
 
