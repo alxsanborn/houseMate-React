@@ -7,7 +7,6 @@ import SessionApi from '../api/session_api';
 
 
 export function signInSuccess(response) {
-  debugger;
   return {
     type: types.SIGN_IN_SUCCESS,
     current_user: response.current_user
@@ -27,7 +26,6 @@ export function signInUser(credentials) {
   return function(dispatch) {
     return SessionApi.signIn(credentials)
       .then(response => {
-        debugger;
         if (response.jwt.length >= 0) {
           sessionStorage.setItem('jwt', response.jwt);
           return dispatch(signInSuccess(response));
@@ -55,4 +53,3 @@ export function signOutUser() {
     return dispatch(signOutSuccess())
   }
 }
-

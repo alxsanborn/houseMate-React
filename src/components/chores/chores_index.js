@@ -8,6 +8,22 @@ import * as actions from '../../actions/index'
 import {bindActionCreators} from 'redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import { reduxForm, Field } from 'redux-form'
+import ChoresChart from './chores_chart.js'
+import {Tabs, Tab} from 'material-ui/Tabs';
+// From https://github.com/oliviertassinari/react-swipeable-views
+import SwipeableViews from 'react-swipeable-views';
+
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400,
+  },
+  slide: {
+    padding: 10,
+  },
+};
 
 const style = {
   width: 800,
@@ -20,48 +36,75 @@ class ChoresIndex extends React.Component {
    constructor(props) {
      super(props)
      this.state = {
-      chores: []
+      chores: [],
+      slideIndex: 0
      }
      this.deleteChore = this.deleteChore.bind(this)
      this.selectChore = this.selectChore.bind(this)
    }
 
   selectChore(event){
-  //debugger
   // const completeChore = {
   //   id: event.target.id,
   //   name: this.refs.chore.props.label,
   //   category: 'chore',
   //   status: "complete"
   //   }
-  debugger
   this.props.actions.editEvent(event.target.id)
   }
 
   deleteChore(event){
-    debugger
     this.props.actions.deleteEvent(event.target.id)
   }
+
+  handleChange = (value) => {
+    this.setState({
+      slideIndex: value,
+    });
+  };
 
  render(){
    return (
     <div className='chores'>
        <Paper style={style} zDepth={3} >
-       <AppBar title="Upcoming Chores" style={{backgroundColor: '#68B6C2'}}
+       <AppBar title="Chores" style={{backgroundColor: '#68B6C2'}}
        iconElementRight={<AddChoreForm/>}/>
-       <ul>
-        {this.props.chores.map((chore) =>
-          <div>
-               <Checkbox
-               label={chore.name}
-               id={chore.id}
-               checked={chore.status === 'complete'}
-               onCheck={this.selectChore}/>
-                <RaisedButton tooltip="Remove Chore" name={chore.id} label="Delete" onTouchTap={this.deleteChore} />
-            </div>
-            )}
-        </ul>
-
+       <div>
+         <Tabs
+          style={{backgroundColor: 'white', color: 'black'}}
+           onChange={this.handleChange}
+           value={this.state.slideIndex}
+         >
+           <Tab label="Your Upcoming Chores" value={0} />
+           <Tab label="Household Chores" value={1} />
+           <Tab label="Chore Distribution" value={2} />
+         </Tabs>
+         <SwipeableViews
+           index={this.state.slideIndex}
+           onChangeIndex={this.handleChange}
+         >
+           <div>
+           <ul>
+            {this.props.chores.map((chore) =>
+              <div>
+                   <Checkbox
+                   label={chore.name}
+                   id={chore.id}
+                   checked={chore.status === 'complete'}
+                   onCheck={this.selectChore}/>
+                    <RaisedButton tooltip="Remove Chore" name={chore.id} label="Delete" onTouchTap={this.deleteChore} />
+                </div>
+                )}
+            </ul>
+           </div>
+           <div style={styles.slide}>
+             All chores here
+           </div>
+           <div style={styles.slide}>
+             <ChoresChart/>
+           </div>
+         </SwipeableViews>
+       </div>
        </Paper>
     </div>
    )

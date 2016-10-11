@@ -4,6 +4,8 @@ import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar'
 import Checkbox from 'material-ui/Checkbox'
 import AddBillForm from './bills_new'
+import BillsChart from './bills_chart.js'
+
 
 const style = {
   width: 800,
@@ -26,6 +28,7 @@ render(){
     <Paper style={style} zDepth={3} >
        <AppBar title="Upcoming Bills" style={{backgroundColor: '#68B6C2'}}
        iconElementRight={<AddBillForm/>}/>
+       <BillsChart/>
       <ul>
          {this.props.bills.map((event, index) =>
            <Checkbox label={`${event.name} $${event.amount}`}/>)}
