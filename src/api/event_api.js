@@ -20,13 +20,14 @@ class EventApi {
   }
 
   static editEvent(selectedEvent) {
-    const request = new Request(`http://localhost:3000/api/v1/events/${selectedEvent}`, {
+    const request = new Request(`http://localhost:3000/api/v1/events/${selectedEvent.id}`, {
       method: 'PUT',
       headers: new Headers({
           'Content-Type': 'application/json'
         }),
          body: JSON.stringify({event: selectedEvent})
     })
+    //debugger
     return fetch(request)
       .then(response => {
         return response.json();

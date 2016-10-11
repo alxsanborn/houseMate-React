@@ -35,14 +35,14 @@ class ChoresIndex extends React.Component {
 
   selectChore(event){
   //debugger
-  // const completeChore = {
-  //   id: event.target.id,
+   const completeChore = {
+     id: event.target.id,
   //   name: this.refs.chore.props.label,
-  //   category: 'chore',
-  //   status: "complete"
-  //   }
-  debugger
-  this.props.actions.editEvent(event.target.id)
+     category: 'chore',
+     status: "complete"
+     }
+  //debugger
+  this.props.actions.editEvent(completeChore)
   }
 
   deleteChore(event){
@@ -56,7 +56,7 @@ class ChoresIndex extends React.Component {
        <Paper style={style} zDepth={3} >
        <AppBar title="Upcoming Chores" style={{backgroundColor: '#68B6C2'}}
        iconElementRight={<AddChoreForm/>}/>
-
+       <ul>
         {this.props.chores.map((chore) =>
           <div>
                <Checkbox
@@ -64,10 +64,10 @@ class ChoresIndex extends React.Component {
                id={chore.id}
                checked={chore.status === 'complete'}
                onCheck={this.selectChore}/>
-                <RaisedButton tooltip="Remove Chore" name={chore.id} label="Delete" onTouchTap={this.deleteChore} />
+
             </div>
             )}
-
+          </ul>
        </Paper>
     </div>
    )
@@ -77,6 +77,7 @@ class ChoresIndex extends React.Component {
  // ChoresIndex = reduxForm({
  //   form: 'EditChoreForm'
  // })(ChoresIndex)
+              //  <RaisedButton tooltip="Remove Chore" name={chore.id} label="Delete" onTouchTap={this.deleteChore} />
 
  // </div>
 

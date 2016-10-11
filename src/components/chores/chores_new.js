@@ -18,15 +18,24 @@ class AddChoreForm extends React.Component {
     super(props);
 
     this.state = {
+    name: '',
     open: false,
     date: null,
     time: null,
     }
 
+    this.handleName = this.handleName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleTime = this.handleTime.bind(this);
+    this.handleClose = this.handleClose.bind(this)
   };
+
+  handleName(event) {
+  this.setState({
+      name: event.target.value
+    });
+  }
 
   handleTime(event, time){
     this.setState({time: time})
@@ -34,23 +43,22 @@ class AddChoreForm extends React.Component {
   handleDate(event, date){
     this.setState({date: date})
   }
-  handleSubmit(){
+
+  handleSubmit(event){
     const newChore = {
-      name: this.refs.name.value,
+      name: this.state.name,
       end_time: this.state.date,
       category: "chore",
     }
-
-    this.refs.name.getRenderedComponent().props.input.onChange("");
-    this.handleClose()
+    //debugger
     this.props.actions.addEvent(newChore)
+    this.handleClose()
+    this.refs.name.getRenderedComponent().props.input.onChange("");
   }
-
 
   handleOpen = () => {
     this.setState({open: true});
   };
-
 
   handleClose = () => {
     this.setState({open: false});
@@ -82,9 +90,9 @@ class AddChoreForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-          <Field withRef={true} ref="name" name="name" component={TextField} hintText="What chore needs to be completed?" />
-         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="Date deadline" />
-          <Field withRef={true} ref="time" name="time" component={TimePicker} onChange={this.handleDate} hintText="Time deadline" />
+          <TextField hintText="What chore needs to be completed?" onChange={this.handleName}/>
+          <DatePicker onChange={this.handleDate} hintText="Deadline: date" />
+          <TimePicker onChange={this.handleTime} hintText="Deadline: time" />
         </form>
       </Dialog>
       </div>
@@ -102,8 +110,6 @@ function mapDispatchToProps(dispatch){
 
 const componentCreator = connect(null, mapDispatchToProps)
 export default componentCreator(AddChoreForm);
-
-
 
 
 // import React from 'react';
