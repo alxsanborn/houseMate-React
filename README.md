@@ -2,17 +2,13 @@ houseMate
 ============
 [![Current Version](https://img.shields.io/badge/version-0.0.9-green.svg)](https://github.com/alxsanborn/houseMate-React) [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://housemate-react.herokuapp.com)
 
-This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets housemates organize schedules, chores, bills, etc. 
-
 ![Homepage Screenshot](http://imgur.com/pxDT6op.png)
 ![Home Container Component Screenshot](http://imgur.com/LJen2Ds.png)
 
-## Demo
--[www.housemate-react.herokuapp.com](www.housemate-react.herokuapp.com)
-
----
+This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets housemates organize schedules, chores, bills, etc.
 
 ## Features
+
 - Material Design
 - Responsive Flexbox integration
 - JSON Web token based user authentication
@@ -21,10 +17,9 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 - Redux framework for implementing flux architecture
 - Moment.js backed Time and Date picking for schedules
 
+## Demo
 
-
-
----
+[www.housemate-react.herokuapp.com](www.housemate-react.herokuapp.com)
 
 ## Additional Information & Resources
 
