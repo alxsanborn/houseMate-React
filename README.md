@@ -26,7 +26,7 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 
 ## Additional Information & Resources
 
-- Rails API repo
+- Rails API repo![Rails API Repo](https://github.com/kallaugher/houseMate-api)
 
 
 
