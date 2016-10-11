@@ -81,7 +81,6 @@ export function fetchEvents(){
 }
 
 export function addEvent(newEventFromForm){
-  debugger;
   const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
     method: 'POST',
     headers: {
@@ -106,6 +105,7 @@ export function editEventSuccess(evnt) {
 export function editEvent(evnt){
   return function(dispatch){
     return EventAPI.editEvent(evnt).then(responseEvent =>{
+      console.log(`Edited ${evnt}`)
       dispatch(editEventSuccess(responseEvent));
     }).catch(error => {
       throw(error);

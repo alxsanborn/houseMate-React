@@ -23,7 +23,8 @@ class EventApi {
     const request = new Request(`http://localhost:3000/api/v1/events/${selectedEvent.id}`, {
       method: 'PUT',
       headers: new Headers({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
         }),
          body: JSON.stringify({event: selectedEvent})
     })

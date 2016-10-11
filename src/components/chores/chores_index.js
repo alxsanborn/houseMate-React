@@ -16,13 +16,6 @@ const style = {
   display: 'inline-block',
 };
 
-const choreCheckbox = ({ input, label }) => (
-  <Checkbox label={label.name}
-    checked={label.status === 'complete'}
-    onCheck={(e, checked) => label.selectChore(checked)}
-    />
-)
-
 class ChoresIndex extends React.Component {
    constructor(props) {
      super(props)
@@ -33,14 +26,20 @@ class ChoresIndex extends React.Component {
      this.selectChore = this.selectChore.bind(this)
    }
 
+   handleStatus(status){
+   if (status === 'pending')
+   {return 'complete'}
+   else {return 'pending'}
+ }
+
   selectChore(event){
   //debugger
    const completeChore = {
-     id: event.target.id,
-  //   name: this.refs.chore.props.label,
+     id: this.props.chores[event.target.id].id,
+     name: this.props.chores[event.target.id].name,
      category: 'chore',
-     status: "complete"
-     }
+     status: this.handleStatus(this.props.chores[event.target.id].status)
+    }
   //debugger
   this.props.actions.editEvent(completeChore)
   }
@@ -57,13 +56,13 @@ class ChoresIndex extends React.Component {
        <AppBar title="Upcoming Chores" style={{backgroundColor: '#68B6C2'}}
        iconElementRight={<AddChoreForm/>}/>
        <ul>
-        {this.props.chores.map((chore) =>
+        {this.props.chores.map((chore, index) =>
           <div>
                <Checkbox
                label={chore.name}
-               id={chore.id}
+               id={index}
                checked={chore.status === 'complete'}
-               onCheck={this.selectChore}/>
+               onClick={this.selectChore}/>
 
             </div>
             )}
