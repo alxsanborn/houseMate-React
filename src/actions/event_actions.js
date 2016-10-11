@@ -12,7 +12,7 @@
 // }
 
 // export function addEvent(newEventFromForm){
-//   const newEventFromApi = fetch('https://www.housemate-api.herokuapp.com/api/v1/events', {
+//   const newEventFromApi = fetch('http://www.housemate-api.herokuapp.com/api/v1/events', {
 //     method: 'POST',
 //     headers: {
 //       'Accept': 'application/json',
