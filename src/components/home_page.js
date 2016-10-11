@@ -5,7 +5,7 @@ import * as sessionActions from '../actions/session_actions'
 import { Link } from 'react-router';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { AppRegistry, View, Image } from 'react-native';
+
 
 import SignIn from './sign_in'
 import Auth from '../auth/authenticator'
@@ -37,7 +37,7 @@ class HomePage extends React.Component {
           { this.checkSignedIn() ? (
               <div style={{position: 'relative'}}>
                 <Link to="/home"> <h1 style={style}>Visit Your Household</h1> </Link>
-                <Image source={ require('../../public/house.jpg') } style={ {} } />
+                <Image source={ require('../../public/house.jpg') } />
               </div>
             ) : <SignIn />
           }

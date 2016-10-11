@@ -6,7 +6,9 @@ import * as sessionActions from '../actions/session_actions';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
+
 import { Grid, Row, Col } from 'react-flexbox-grid';
+
 
 
 class SignIn extends React.Component {
@@ -39,11 +41,11 @@ class SignIn extends React.Component {
   render() {
     return (
       <Grid>
-        <Row center="md">
-          <Col>
+        <Row style={{'padding-top': '100px'}} center="md">
+          <Col md={3} >
           <form>
-
             <TextField hintText="Email"
+            fullWidth={true}
             floatingLabelText="Enter Email"
             name="email" label="email"
             value={ this.state.credentials.email }
@@ -51,6 +53,7 @@ class SignIn extends React.Component {
             <br />
 
             <TextField hintText="Password"
+            fullWidth={true}
             floatingLabelText="Enter Password"
             type="password" name="password"
             label="password"
@@ -58,19 +61,19 @@ class SignIn extends React.Component {
             onChange={ this.onChange }
             />
             <br />
-
+            <div>
             <RaisedButton
             label="Sign In"
             fullWidth={ true }
             type='submit'
             onClick={ this.onSave }
             primary/>
-
+            </div>
           </form>
           </Col>
         </Row>
       </Grid>
-      );
+    );
   }
 }
 
