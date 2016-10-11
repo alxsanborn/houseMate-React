@@ -11,33 +11,50 @@ import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import Add from 'material-ui/svg-icons/content/add'
 import DatePicker from 'material-ui/DatePicker'
+import TimePicker from 'material-ui/TimePicker';
 
 class AddBillForm extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
+    name: '',
+    amount: 0,
     open: false,
-    date: null
+    time: null,
     }
 
+    this.handleName = this.handleName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleAmount = this.handleAmount.bind(this);
+    this.handleClose = this.handleClose.bind(this)
   };
 
+  handleName(event) {
+  this.setState({
+      name: event.target.value
+    });
+  }
+
+  handleAmount(event){
+    this.setState({amount: event.target.value})
+  }
   handleDate(event, date){
     this.setState({date: date})
   }
-  handleSubmit(){
+
+  handleSubmit(event){
     const newBill = {
-      name: this.refs.name.value,
+      name: this.state.name,
+      amount: this.state.amount,
       end_time: this.state.date,
       category: "bill",
     }
-
-    this.refs.name.getRenderedComponent().props.input.onChange("");
-    this.handleClose()
+    //debugger
     this.props.actions.addEvent(newBill)
+    this.handleClose()
+    this.refs.name.getRenderedComponent().props.input.onChange("");
   }
 
   handleOpen = () => {
@@ -74,8 +91,9 @@ class AddBillForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-          <Field withRef={true} ref="name" name="name" component={TextField} hintText="What bill needs to be paid?" />
-         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="When is it due?" />
+          <TextField hintText="What bill needs to be paid?" onChange={this.handleName}/>
+          <TextField hintText="How much?" onChange={this.handleAnount}/>
+          <DatePicker onChange={this.handleDate} hintText="What day is it due?" />
         </form>
       </Dialog>
       </div>
