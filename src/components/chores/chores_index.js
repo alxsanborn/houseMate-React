@@ -10,10 +10,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { reduxForm, Field } from 'redux-form'
 
 
-const choreCheckbox = ({input, label}) => (
-<Checkbox label={ label.name } checked={ label.status === 'complete' } onCheck={ (e, checked) => label.selectChore(checked) } />
-)
-
 class ChoresIndex extends React.Component {
   constructor(props) {
     super(props)

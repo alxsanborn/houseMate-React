@@ -81,7 +81,7 @@ class AddSocialEventForm extends React.Component {
 
     return (
       <div>
-      <IconButton tooltip="Add SocialEvent" onTouchTap={this.handleOpen}>
+      <IconButton tooltip="Add Social Event" onTouchTap={this.handleOpen}>
         <Add color={"#FFF"}/>
       </IconButton>
       <Dialog
