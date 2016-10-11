@@ -1,6 +1,5 @@
 import * as types from './action_types';
 import SessionApi from '../api/session_api';
-// import Auth from '../auth/authenticator'
 
 
 //////////////SIGNING IN////////////////

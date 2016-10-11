@@ -5,7 +5,7 @@ import * as types from './action_types'
 export function fetchGroupMembersSuccess(response) {
   debugger
   return {
-    type: 'FETCH_MEMBERS',
+    type: types.FETCH_MEMBERS,
     payload: response
   }
 }

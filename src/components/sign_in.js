@@ -61,14 +61,16 @@ class SignIn extends React.Component {
             onChange={ this.onChange }
             />
             <br />
+
             <div>
-            <RaisedButton
-            label="Sign In"
-            fullWidth={ true }
-            type='submit'
-            onClick={ this.onSave }
-            primary/>
+              <RaisedButton
+              label="Sign In"
+              fullWidth={ true }
+              type='submit'
+              onClick={ this.onSave }
+              primary/>
             </div>
+
           </form>
           </Col>
         </Row>
