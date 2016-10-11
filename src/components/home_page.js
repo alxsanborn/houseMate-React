@@ -2,10 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import * as sessionActions from '../actions/session_actions'
-import { Link } from 'react-router';
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import {Link} from 'react-router';
+import { Image } from 'react-native';
 
 import SignIn from './sign_in'
 import Auth from '../auth/authenticator'
@@ -21,7 +19,7 @@ const style = {
 }
 
 class HomePage extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props)
     this.checkSignedIn = this.checkSignedIn.bind(this)
   }
@@ -31,19 +29,16 @@ class HomePage extends React.Component {
   }
 
   render() {
-    return (
-      <MuiThemeProvider>
-        <div>
-          { this.checkSignedIn() ? (
-              <div style={{position: 'relative'}}>
-                <Link to="/home"> <h1 style={style}>Visit Your Household</h1> </Link>
-                <Image source={ require('../../public/house.jpg') } />
-              </div>
-            ) : <SignIn />
-          }
-        </div>
-      </MuiThemeProvider>
-    )
+   return (
+     <div>
+        { this.checkSignedIn() ? (
+          <div style={{position: 'relative'}}>
+            <Link to="/home"><h1 style={style}>Visit Your Household</h1></Link>
+            <Image source={require('../../public/house.jpg')} style={{}} />
+          </div>
+        ) : <SignIn />}
+     </div>
+   )
   }
 }
 
