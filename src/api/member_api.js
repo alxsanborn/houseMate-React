@@ -5,7 +5,7 @@ class MemberApi {
 
   static getGroupMembers() {
     const headers = this.requestHeaders();
-    const request = new Request(`http://localhost:3000/api/v1/users/`, {
+    const request = new Request(`http://www.housemate-api.herokuapp.com/api/v1/users/`, {
       method: 'GET',
       headers: headers
     });

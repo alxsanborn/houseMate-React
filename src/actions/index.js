@@ -59,7 +59,7 @@ export function fetchGroupMembers() {
 
 export function fetchEvents(){
   // create request
-  const request = new Request('http://localhost:3000/api/v1/events', {
+  const request = new Request('http://www.housemate-api.herokuapp.com/api/v1/events', {
     method: 'GET',
     headers: {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
   });
@@ -81,7 +81,7 @@ export function fetchEvents(){
 }
 
 export function addEvent(newEventFromForm){
-  const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
+  const newEventFromApi = fetch('http://www.housemate-api.herokuapp.com/api/v1/events', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
