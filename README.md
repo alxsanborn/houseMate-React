@@ -4,7 +4,8 @@ houseMate
 
 This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets housemates organize schedules, chores, bills, etc. 
 
-![Homepage Screenshot](http://imgur.com/69FI19E.png)
+![Homepage Screenshot](http://imgur.com/pxDT6op.png)
+![Home Container Component Screenshot](http://imgur.com/LJen2Ds.png)
 
 ## Demo
 -[www.housemate-react.herokuapp.com](www.housemate-react.herokuapp.com)
@@ -20,7 +21,7 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 - Redux framework for implementing flux architecture
 - Moment.js backed Time and Date picking for schedules
 
-![Home Container Component Screenshot](http://imgur.com/6MnYRcq.png)
+
 
 
 ---
