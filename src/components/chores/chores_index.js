@@ -45,11 +45,17 @@ class ChoresIndex extends React.Component {
   }
 
   deleteChore(event){
-    debugger
-    this.props.actions.deleteEvent(event.target.id)
+    let choresToDelete = []
+    choresToDelete = this.props.chores.filter(chore => {
+      return chore.status === 'complete'
+    })
+    //debugger
+    choresToDelete.forEach((chore) => this.props.actions.deleteEvent(chore.id))
+
   }
 
  render(){
+
    return (
     <div className='chores'>
        <Paper style={style} zDepth={3} >
@@ -63,27 +69,19 @@ class ChoresIndex extends React.Component {
                id={index}
                checked={chore.status === 'complete'}
                onClick={this.selectChore}/>
-
             </div>
             )}
           </ul>
+          <RaisedButton label="Remove completed chores" onTouchTap={this.deleteChore} />
        </Paper>
     </div>
    )
  }
  }
-        // <Field name="chore" component={choreCheckbox} label={chore} onChange={this.selectChore} />
- // ChoresIndex = reduxForm({
- //   form: 'EditChoreForm'
- // })(ChoresIndex)
-              //  <RaisedButton tooltip="Remove Chore" name={chore.id} label="Delete" onTouchTap={this.deleteChore} />
-
- // </div>
 
  function mapDispatchToProps(dispatch){
    return {actions: bindActionCreators(actions, dispatch)}
  }
-
 
 const componentCreator = connect(null, mapDispatchToProps)
 export default componentCreator(ChoresIndex);
