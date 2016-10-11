@@ -81,7 +81,7 @@ class AddSocialEventForm extends React.Component {
 
     return (
       <div>
-      <IconButton tooltip="Add SocialEvent" onTouchTap={this.handleOpen}>
+      <IconButton tooltip="Add Social Event" onTouchTap={this.handleOpen}>
         <Add color={"#FFF"}/>
       </IconButton>
       <Dialog
@@ -90,7 +90,7 @@ class AddSocialEventForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-          <TextField hintText="What social event would you like to add?" onChange={this.handleName}/>
+          <TextField hintText="What is your social event called?" onChange={this.handleName}/>
           <DatePicker onChange={this.handleDate} hintText="What day is it?" />
           <TimePicker onChange={this.handleTime} hintText="What time is it?" />
         </form>

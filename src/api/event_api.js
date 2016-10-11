@@ -28,7 +28,6 @@ class EventApi {
         }),
          body: JSON.stringify({event: selectedEvent})
     })
-    //debugger
     return fetch(request)
       .then(response => {
         return response.json();

@@ -21,11 +21,11 @@ const style = {
 
 class HomeContainer extends React.Component {
   componentWillMount() {
-    if (this.props.socialEvents.length == 0) {
+    if (this.props.socialEvents.length === 0) {
       this.props.actions.fetchEvents();
     }
 
-    if (this.props.messages.length == 0) {
+    if (this.props.messages.length === 0) {
       this.props.actions.loadMessages();
     }
 

@@ -51,7 +51,6 @@ class AddBillForm extends React.Component {
       end_time: this.state.date,
       category: "bill",
     }
-    //debugger
     this.props.actions.addEvent(newBill)
     this.handleClose()
     this.refs.name.getRenderedComponent().props.input.onChange("");

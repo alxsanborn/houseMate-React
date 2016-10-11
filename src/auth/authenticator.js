@@ -1,6 +1,5 @@
 import {browserHistory} from 'react-router';
 
-
 class Auth {
   static signedIn() {
     return !!sessionStorage.jwt;
