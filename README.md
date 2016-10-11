@@ -7,6 +7,7 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 ![Homepage Screenshot](http://imgur.com/69FI19E.png)
 
 ## Demo
+-[www.housemate-react.herokuapp.com](www.housemate-react.herokuapp.com)
 
 ---
 
