@@ -22,6 +22,7 @@ class SignIn extends React.Component {
     }
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
+    this.onDemoClick = this.onDemoClick.bind(this);
   }
 
   onChange(event) {
@@ -34,44 +35,72 @@ class SignIn extends React.Component {
   }
 
   onSave(event) {
-    event.preventDefault();
+    event.preventDefault()
     this.props.actions.signInUser(this.state.credentials);
   }
+
+  onDemoClick(event) {
+    event.preventDefault();
+
+    this.setState({
+      credentials: {email: "demo@email.com", password: "demo"}
+    });
+
+    setTimeout(() => this.props.actions.signInUser({email: "demo@email.com", password: "demo"}), 1000);
+  }
+
+
 
   render() {
     return (
       <Grid>
-        <Row style={{'padding-top': '100px'}} center="md">
+        <Row style={{'padding': '100px 0 0 0'}} center="md">
           <Col md={3} >
           <form>
-            <TextField hintText="Email"
+            <TextField
+            className="email-field"
+            hintText="Email"
             fullWidth={true}
             floatingLabelText="Enter Email"
-            name="email" label="email"
+            name="email"
+            label="email"
             value={ this.state.credentials.email }
             onChange={ this.onChange } />
             <br />
 
-            <TextField hintText="Password"
+            <TextField
+            className="password-field"
+            hintText="Password"
             fullWidth={true}
             floatingLabelText="Enter Password"
-            type="password" name="password"
+            type="password"
+            name="password"
             label="password"
             value={ this.state.credentials.password }
             onChange={ this.onChange }
             />
             <br />
+            <br/>
 
             <div>
               <RaisedButton
+              className="sign-in-button"
               label="Sign In"
               fullWidth={ true }
               type='submit'
               onClick={ this.onSave }
               primary/>
+
+              <RaisedButton
+              label="or Sign In with Demo Account"
+              onClick={ this.onDemoClick}
+              fullWidth={true}
+              labelStyle={{color: "gray"}}
+              />
             </div>
 
           </form>
+
           </Col>
         </Row>
       </Grid>
@@ -86,3 +115,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(SignIn)
+
+

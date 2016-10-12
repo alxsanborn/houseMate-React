@@ -7,7 +7,6 @@ import AppBar from 'material-ui/AppBar';
 import * as actions from '../../actions/index'
 import { bindActionCreators } from 'redux'
 import RaisedButton from 'material-ui/RaisedButton'
-import { reduxForm, Field } from 'redux-form'
 
 
 class ChoresIndex extends React.Component {
@@ -57,7 +56,6 @@ class ChoresIndex extends React.Component {
           title="Upcoming Chores"
           style={ { backgroundColor: '#68B6C2' } }
           iconElementRight={ <AddChoreForm/> }
-          group_members={ this.props.groupMembers }
           />
 
           <ul>
