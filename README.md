@@ -2,7 +2,7 @@ houseMate
 ============
 [![Current Version](https://img.shields.io/badge/version-0.0.9-green.svg)](https://github.com/alxsanborn/houseMate-React) [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://housemate-react.herokuapp.com)
 
-![Homepage Screenshot](http://imgur.com/pxDT6op.png)
+![Homepage Screenshot](http://imgur.com/2kLrzH4.png)
 ![Home Container Component Screenshot](http://imgur.com/LJen2Ds.png)
 
 This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets housemates organize schedules, chores, bills, etc.
