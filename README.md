@@ -18,7 +18,13 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 
 ## Demo
 
+### Test this demo with:
+
+### email: demo@email.com
+### password: demo
+
 [www.housemate-react.herokuapp.com](http://housemate-react.herokuapp.com)
+
 
 ## Additional Information & Resources
 
