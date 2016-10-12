@@ -7,7 +7,6 @@ import AppBar from 'material-ui/AppBar';
 import * as actions from '../../actions/index'
 import { bindActionCreators } from 'redux'
 import RaisedButton from 'material-ui/RaisedButton'
-import { reduxForm, Field } from 'redux-form'
 
 import ChoresChart from './chores_chart.js'
 import {Tabs, Tab} from 'material-ui/Tabs';
