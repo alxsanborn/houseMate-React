@@ -10,7 +10,7 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 ## Features
 
 - Material Design w/ Material UI Components
-- Responsive Flexbox integration 
+- Responsive Flexbox integration
 - JSON Web token based user authentication
 - Rails API with PostgreSQL database
 - Routing by React-Router
@@ -18,7 +18,7 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 
 ## Demo
 
-[www.housemate-react.herokuapp.com](www.housemate-react.herokuapp.com)
+[www.housemate-react.herokuapp.com](http://housemate-react.herokuapp.com)
 
 ## Additional Information & Resources
 
