@@ -43,10 +43,10 @@ class SignIn extends React.Component {
     event.preventDefault();
 
     this.setState({
-      credentials: {email: "demo@email.com", password: "demo"}
+      credentials: {email: "alex_s@gmail.com", password: "password"}
     });
 
-    setTimeout(() => this.props.actions.signInUser({email: "demo@email.com", password: "demo"}), 1000);
+    setTimeout(() => this.props.actions.signInUser({email: "alex_s@gmail.com", password: "password"}), 1000);
   }
 
 
