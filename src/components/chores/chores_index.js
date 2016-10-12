@@ -9,15 +9,25 @@ import { bindActionCreators } from 'redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import { reduxForm, Field } from 'redux-form'
 
+import ChoresChart from './chores_chart.js'
+import {Tabs, Tab} from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
+
+const tabStyle = {
+  backgroundColor: '#b3dae0',
+  color: 'black',
+}
 
 class ChoresIndex extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      chores: []
+      chores: [],
+      slideIndex: 0
     }
     this.deleteChore = this.deleteChore.bind(this)
     this.selectChore = this.selectChore.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleStatus(status) {
@@ -29,6 +39,7 @@ class ChoresIndex extends React.Component {
   }
 
   selectChore(event) {
+    event.stopPropagation()
     const completeChore = {
       id: this.props.chores[event.target.id].id,
       name: this.props.chores[event.target.id].name,
@@ -47,6 +58,14 @@ class ChoresIndex extends React.Component {
 
   }
 
+  handleChange(value) {
+    if (Number.isInteger(value)){
+      this.setState({
+        slideIndex: event.target.value,
+      });
+    }
+  };
+
   render() {
 
     return (
@@ -54,25 +73,42 @@ class ChoresIndex extends React.Component {
         <Paper zDepth={ 3 }>
 
           <AppBar
-          title="Upcoming Chores"
+          title="Chores"
           style={ { backgroundColor: '#68B6C2' } }
           iconElementRight={ <AddChoreForm/> }
-          group_members={ this.props.groupMembers }
           />
 
-          <ul>
-            { this.props.chores.map( (chore, index) =>
+          <Tabs
+            onChange={this.handleChange}
+            value={this.state.slideIndex}
+            tabItemContainerStyle={{backgroundColor:'#b3dae0', color: 'black'}}
+            inkBarStyle={{backgroundColor:"#FFC107"}}
+         >
+            <Tab label="Your Upcoming Chores" value={0}>
               <div>
-                <Checkbox
-                label={ chore.name }
-                id={ index }
-                checked={ chore.status === 'complete' }
-                onClick={ this.selectChore } />
-              </div>
-            )}
-          </ul>
+                <ul>
+                  { this.props.chores.map( (chore, index) =>
+                    <div>
+                      <Checkbox
+                      label={ chore.name }
+                      id={ index }
+                      checked={ chore.status === 'complete' }
+                      onClick={ this.selectChore } />
+                    </div>
+                  )}
+                </ul>
 
-          <RaisedButton label="Remove completed chores" onTouchTap={ this.deleteChore } />
+                <RaisedButton label="Remove completed chores" onTouchTap={ this.deleteChore } />
+              </div>
+            </Tab>
+
+            <Tab label="Household Chores" value={1}>
+              {"test"}
+            </Tab>
+            <Tab label="Chore Distribution" value={2}>
+            <ChoresChart chores={this.props.chores} groupMembers={this.props.groupMembers}/>
+            </Tab>
+         </Tabs>
         </Paper>
       </div>
     )

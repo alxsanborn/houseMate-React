@@ -41,7 +41,7 @@ class HomeContainer extends React.Component {
                 <SocialEvents social_events={ this.props.socialEvents }/>
               </div>
             <div style={style.box}>
-                <ChoresIndex chores={ this.props.chores }  group_members={this.props.groupMembers} />
+                <ChoresIndex chores={ this.props.chores }  groupMembers={this.props.groupMembers} />
             </div>
             <div style={style.box}>
               <BillsIndex bills={ this.props.bills } />
@@ -82,7 +82,6 @@ function mapStateToProps(state) {
   }
 
   groupMembers = state.members
-
   return {
     groupMembers: groupMembers,
     socialEvents: socialEvents,
