@@ -16,11 +16,9 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 - Routing by React-Router
 - Redux framework for implementing flux architecture
 
-## Demo
+## Demo - Try houseMate now!
 
-#### Try houseMate now!
-
-Sign in [here](http://housemate-react.herokuapp.com) using:
+### Sign in [here](http://housemate-react.herokuapp.com) using:
 
 **email:** demo@email.com
 
