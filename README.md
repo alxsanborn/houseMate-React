@@ -18,12 +18,14 @@ This is a ReactJS + Redux web app powered by a Ruby on Rails API that lets house
 
 ## Demo
 
-### Test this demo with:
+#### Try houseMate now!
 
-### email: demo@email.com
-### password: demo
+Sign in [here](http://housemate-react.herokuapp.com) using:
 
-[www.housemate-react.herokuapp.com](http://housemate-react.herokuapp.com)
+**email:** demo@email.com
+
+**password**: demo
+
 
 
 ## Additional Information & Resources
