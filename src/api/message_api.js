@@ -5,7 +5,7 @@ class MessageApi {
 
   static fetchMessages() {
     const headers = this.requestHeaders();
-    const request = new Request('http://localhost:3000/api/v1/messages', {
+    const request = new Request('http://housemate-api.herokuapp.com/api/v1/messages', {
       method: 'GET',
       headers: headers
     });
@@ -21,7 +21,7 @@ class MessageApi {
 
   static addMessage(newMessageFromForm){
     const headers = this.requestHeaders();
-    const request = new Request('http://localhost:3000/api/v1/messages', {
+    const request = new Request('http://housemate-api.herokuapp.com/api/v1/messages', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
