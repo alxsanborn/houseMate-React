@@ -11,6 +11,7 @@ import SocialEvents from './social_events/social_events_index'
 import ChoresIndex from './chores/chores_index'
 import Messages from './messages/messages_index'
 import BillsIndex from './bills/bills_index'
+import HouseMembersIndex from './house_members/house_members_index'
 
 const style = {
   box: {
@@ -52,6 +53,9 @@ class HomeContainer extends React.Component {
           <Col md>
             <div style={style.box}>
               <Messages messages={ this.props.messages }/>
+            </div>
+            <div style={style.box}>
+              <HouseMembersIndex/>
             </div>
           </Col>
           </Row>
