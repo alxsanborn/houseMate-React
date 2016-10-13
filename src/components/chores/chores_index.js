@@ -60,7 +60,6 @@ class ChoresIndex extends React.Component {
   }
 
   selectChore(event) {
-    event.stopPropagation()
     const completeChore = {
       id: this.props.chores[event.target.id].id,
       name: this.props.chores[event.target.id].name,
