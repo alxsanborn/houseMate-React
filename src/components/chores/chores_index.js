@@ -24,6 +24,7 @@ class ChoresIndex extends React.Component {
     super(props)
     this.state = {
       chores: [],
+      isClicking: false,
       slideIndex: 0
     }
     this.deleteChore = this.deleteChore.bind(this)
@@ -36,7 +37,6 @@ class ChoresIndex extends React.Component {
 
   currentUser(){
     let currentUser = this.props.groupMembers.find((member) => { return member.id === currentUserId})
-    debugger;
     if (currentUser){
       return currentUser
     }
@@ -49,7 +49,12 @@ class ChoresIndex extends React.Component {
     let currentUser =
     this.props.groupMembers.find((member) => { return member.id === currentUserId})
     if (currentUser){
-        return currentUser.assigned_chores
+      return currentUser.assigned_chores
+      // this.props.chores.filter((chore)=>{
+      //   return choreIds.map((id)=>{
+      //     return id === chore.id
+      //   })
+      // })
     }
   }
 
@@ -71,17 +76,20 @@ class ChoresIndex extends React.Component {
 
   selectChore(event) {
     const completeChore = {
-      id: this.props.chores[event.target.id].id,
-      name: this.props.chores[event.target.id].name,
+      id: this.assignCurrentUserChores()[event.target.id].id,
+      name: this.assignCurrentUserChores()[event.target.id].name,
       category: 'chore',
-      status: this.handleStatus(this.props.chores[event.target.id].status)
+      status: this.handleStatus(this.assignCurrentUserChores()[event.target.id].status)
     }
+
+    this.setState({isClicking: !this.state.isClicking})
+
     this.props.actions.editEvent(completeChore)
   }
 
   deleteChore(event) {
     let choresToDelete = []
-    choresToDelete = this.props.chores.filter(chore => {
+    choresToDelete = this.assignCurrentUserChores().filter(chore => {
       return chore.status === 'complete'
     })
     choresToDelete.forEach((chore) => this.props.actions.deleteEvent(chore.id))
@@ -97,7 +105,6 @@ class ChoresIndex extends React.Component {
   };
 
   render() {
-
     return (
       <div className='chores'>
         <Paper zDepth={ 3 }>
@@ -120,7 +127,7 @@ class ChoresIndex extends React.Component {
             <Tab label="Your Upcoming Chores" value={0}>
               <div>
                 <ul>
-                  { this.props.chores.map( (chore, index) =>
+                  { this.assignCurrentUserChores().map((chore, index) =>
                     <div>
                       <Checkbox
                       label={ chore.name }
