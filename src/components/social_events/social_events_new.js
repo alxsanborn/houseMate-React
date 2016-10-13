@@ -1,3 +1,4 @@
+
 import { reduxForm, Field } from 'redux-form'
 import {TextField} from 'redux-form-material-ui'
 import React from 'react';
@@ -18,10 +19,7 @@ class AddSocialEventForm extends React.Component {
     super(props);
 
     this.state = {
-<<<<<<< HEAD
-=======
     name: '',
->>>>>>> master
     open: false,
     date: null,
     time: null,
@@ -31,28 +29,6 @@ class AddSocialEventForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleTime = this.handleTime.bind(this);
-<<<<<<< HEAD
-  };
-
-  handleTime(event, time){
-    this.setState({time: time})
-  }
-  handleDate(event, date){
-    this.setState({date: date})
-  }
-  handleSubmit(){
-    const newSocialEvent = {
-      name: this.refs.name.value,
-      end_time: this.state.date,
-      category: "social",
-    }
-
-    this.refs.name.getRenderedComponent().props.input.onChange("");
-    this.handleClose()
-    this.props.actions.addEvent(newSocialEvent)
-  }
-
-=======
     this.handleClose = this.handleClose.bind(this)
   };
 
@@ -72,7 +48,7 @@ class AddSocialEventForm extends React.Component {
   handleSubmit(event){
     const newSocialEvent = {
       name: this.state.name,
-      start_time: this.state.date,
+      end_time: this.state.date,
       category: "social",
     }
     //debugger
@@ -81,7 +57,6 @@ class AddSocialEventForm extends React.Component {
     this.refs.name.getRenderedComponent().props.input.onChange("");
   }
 
->>>>>>> master
   handleOpen = () => {
     this.setState({open: true});
   };
@@ -108,7 +83,7 @@ class AddSocialEventForm extends React.Component {
     return (
       <div>
       <IconButton tooltip="Add Social Event" onTouchTap={this.handleOpen}>
-        <Add color={"#FFF"} />
+        <Add color={"#FFF"}/>
       </IconButton>
       <Dialog
         title="Add a Social Event"
@@ -116,15 +91,9 @@ class AddSocialEventForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-<<<<<<< HEAD
-          <Field withRef={true} ref="name" name="name" component={TextField} hintText="What event would you like to log?" />
-         <Field withRef={true} ref="date" name="date" component={DatePicker} onChange={this.handleDate} hintText="What day is it?" />
-          <Field withRef={true} ref="time" name="time" component={        TimePicker} onChange={this.handleDate} hintText="What time does it start?" />
-=======
           <TextField hintText="What is your social event called?" onChange={this.handleName}/>
           <DatePicker onChange={this.handleDate} hintText="What day is it?" />
           <TimePicker onChange={this.handleTime} hintText="What time is it?" />
->>>>>>> master
         </form>
       </Dialog>
       </div>
