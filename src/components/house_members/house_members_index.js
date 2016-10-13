@@ -13,7 +13,6 @@ const style = {
   width: 560,
   textAlign: 'left',
   display: 'inline-block',
-  padding: '20px'
 };
 
 const avatarStyle = {
@@ -36,7 +35,7 @@ export default class ListExampleNested extends React.Component {
     return (
       <div className='house-members'>
         <Paper style={ style } zDepth={ 3 }>
-          <AppBar title="Your House" style={ { backgroundColor: '#68B6C2' } }/>
+        <AppBar title="Your House" style={ { backgroundColor: '#68B6C2' } }/>
           <List>
             <ListItem
               primaryText="Alice Kallaugher"
@@ -46,7 +45,7 @@ export default class ListExampleNested extends React.Component {
                 >
                   AK
                 </Avatar>}
-              initiallyOpen={true}
+              initiallyOpen={false}
               primaryTogglesNestedList={true}
               nestedItems={[
                 <ListItem
@@ -69,7 +68,7 @@ export default class ListExampleNested extends React.Component {
                 >
                   GB
                 </Avatar>}
-              initiallyOpen={true}
+              initiallyOpen={false}
               primaryTogglesNestedList={true}
               nestedItems={[
                 <ListItem
@@ -92,7 +91,7 @@ export default class ListExampleNested extends React.Component {
                 >
                   AS
                 </Avatar>}
-              initiallyOpen={true}
+              initiallyOpen={false}
               primaryTogglesNestedList={true}
               nestedItems={[
                 <ListItem
