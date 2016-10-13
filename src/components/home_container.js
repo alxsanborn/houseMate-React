@@ -42,7 +42,8 @@ class HomeContainer extends React.Component {
                 {/* check if this way of passsing props works */}
               </div>
             <div style={style.box}>
-                <ChoresIndex chores={ this.props.chores } groupMembers={this.props.groupMembers} />
+                <ChoresIndex chores={ this.props.chores } groupMembers={this.props.groupMembers}
+                />
             </div>
             <div style={style.box}>
               <BillsIndex bills={ this.props.bills } />
