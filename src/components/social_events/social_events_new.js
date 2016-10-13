@@ -51,7 +51,6 @@ class AddSocialEventForm extends React.Component {
       start_time: this.state.date,
       category: "social",
     }
-    //debugger
     this.props.actions.addEvent(newSocialEvent)
     this.handleClose()
     this.refs.name.getRenderedComponent().props.input.onChange("");

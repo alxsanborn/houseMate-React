@@ -6,7 +6,6 @@ import MessageApi from '../api/message_api';
 // }
 //
 // export function loadMessages() {
-//   debugger;
 //   return function(dispatch) {
 //     return MessageApi.fetchMessages().then(messages => {
 //       dispatch(loadMessagesSuccess(messages));
