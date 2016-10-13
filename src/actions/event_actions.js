@@ -1,3 +1,16 @@
+// import * as types from './action_types';
+// import EventApi from '../api/event_api';
+
+// export function returnEvents(){
+//   return function(dispatch) {
+//     return EventApi.fetchEvents().then(events => {
+//       dispatch(returnEventsSuccess(events));
+//     }).catch(error => {
+//       throw(error);
+//     });
+//   }
+// }
+
 // export function addEvent(newEventFromForm){
 //   const newEventFromApi = fetch('http://localhost:3000/api/v1/events', {
 //     method: 'POST',

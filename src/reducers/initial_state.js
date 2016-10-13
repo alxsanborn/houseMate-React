@@ -1,6 +1,6 @@
 export default {
-  users: [],
-  groups: [],
+  members: [],
   events: [],
-  session: !!sessionStorage.jwt
+  messages: [],
+  session: {status: !!sessionStorage.jwt, current_user: {}}
 }

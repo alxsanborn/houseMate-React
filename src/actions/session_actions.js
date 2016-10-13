@@ -1,21 +1,55 @@
 import * as types from './action_types';
-import sessionApi from '../api/session_api';
+import SessionApi from '../api/session_api';
 
-export function signinSuccess() {
+
+//////////////SIGNING IN////////////////
+
+
+export function signInSuccess(response) {
   return {
-    type: types.SIGN_IN_SUCCESS
+    type: types.SIGN_IN_SUCCESS,
+    current_user: response.current_user
+  }
+}
+
+export function signInFailure(response) {
+  return {
+    type: types.SIGN_IN_FAILURE,
+    current_user: null,
+    errors: response.errors
+    //include errors from api here to display
   }
 }
 
 export function signInUser(credentials) {
   return function(dispatch) {
-    return sessionApi.signin(credentials)
+    return SessionApi.signIn(credentials)
       .then(response => {
-      sessionStorage.setItem('jwt', response.jwt);
-      //setState() to have current user here
-      dispatch(signinSuccess());
+        if (response.jwt.length >= 0) {
+          sessionStorage.setItem('jwt', response.jwt);
+          return dispatch(signInSuccess(response));
+        } else {
+          return dispatch(signInFailure(response));
+        }
     }).catch(error => {
-      throw (error);
+        throw (error);
     });
   };
 }
+
+
+/////////////SIGNING OUT//////////////
+
+export function signOutSuccess() {
+  return {
+    type: types.SIGN_OUT_SUCCESS,
+    current_user: null
+  }
+}
+
+export function signOutUser() {
+  return function(dispatch) {
+    return dispatch(signOutSuccess())
+  }
+}
+
