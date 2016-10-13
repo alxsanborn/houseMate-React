@@ -66,7 +66,6 @@ function mapStateToProps(state) {
   let chores = []
   let bills = []
   let messages = []
-  let currentUser
 
   if (state.events.length > 0) {
     socialEvents = state.events.filter(event => {
@@ -85,15 +84,13 @@ function mapStateToProps(state) {
   }
 
   groupMembers = state.members
-  currentUser = state.current_user
 
   return {
     groupMembers: groupMembers,
     socialEvents: socialEvents,
     chores: chores,
     bills: bills,
-    messages: messages,
-    currentUser: currentUser
+    messages: messages
   }
 }
 
