@@ -10,7 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 import ChoresChart from './chores_chart.js'
 import {Tabs, Tab} from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
+
 
 const tabStyle = {
   backgroundColor: '#b3dae0',
@@ -29,8 +29,20 @@ class ChoresIndex extends React.Component {
     this.deleteChore = this.deleteChore.bind(this)
     this.selectChore = this.selectChore.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.currentUser = this.currentUser.bind(this)
     this.currentUserChores = this.currentUserChores.bind(this)
     this.assignCurrentUserChores = this.assignCurrentUserChores.bind(this)
+  }
+
+  currentUser(){
+    let currentUser = this.props.groupMembers.find((member) => { return member.id === currentUserId})
+    debugger;
+    if (currentUser){
+      return currentUser
+    }
+    else {
+      return null
+    }
   }
 
   currentUserChores(){
@@ -43,11 +55,9 @@ class ChoresIndex extends React.Component {
 
   assignCurrentUserChores(){
     let currentUserChores = []
-
     if (this.currentUserChores()) {
       currentUserChores = this.currentUserChores()
     }
-
     return currentUserChores
   }
 
@@ -60,7 +70,6 @@ class ChoresIndex extends React.Component {
   }
 
   selectChore(event) {
-    event.stopPropagation()
     const completeChore = {
       id: this.props.chores[event.target.id].id,
       name: this.props.chores[event.target.id].name,
@@ -105,10 +114,13 @@ class ChoresIndex extends React.Component {
             tabItemContainerStyle={{backgroundColor:'#b3dae0', color: 'black'}}
             inkBarStyle={{backgroundColor:"#FFC107"}}
          >
+
+
+        //  FIX THIS --- YOU CAN'T CLICK THE CHECKBOX, I THINK IT'S AN ISSUE WITH THE ID? ASK ALEX
             <Tab label="Your Upcoming Chores" value={0}>
               <div>
                 <ul>
-                  { this.assignCurrentUserChores().map( (chore, index) =>
+                  { this.props.chores.map( (chore, index) =>
                     <div>
                       <Checkbox
                       label={ chore.name }
