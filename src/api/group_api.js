@@ -1,6 +1,6 @@
 // class GroupApi {
 //   static getUserGroups(currentUserGroupId) {
-//     const request = new Request('http://housemate-react.herokuapp.com/api/v1/groups', {
+//     const request = new Request('http://housemate-api.herokuapp.com/api/v1/groups', {
 //       method: 'GET',
 //       headers: {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`}
 //     });
