@@ -1,3 +1,4 @@
+
 import { reduxForm, Field } from 'redux-form'
 import {TextField} from 'redux-form-material-ui'
 import React from 'react';
@@ -47,7 +48,7 @@ class AddSocialEventForm extends React.Component {
   handleSubmit(event){
     const newSocialEvent = {
       name: this.state.name,
-      end_time: this.state.date,
+      start_time: this.state.date,
       category: "social",
     }
     //debugger
