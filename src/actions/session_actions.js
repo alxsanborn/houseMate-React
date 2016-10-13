@@ -26,6 +26,7 @@ export function signInUser(credentials) {
     return SessionApi.signIn(credentials)
       .then(response => {
         if (response.jwt.length >= 0) {
+          sessionStorage.setItem('currentUser', response.current_user.id)
           sessionStorage.setItem('jwt', response.jwt);
           return dispatch(signInSuccess(response));
         } else {
@@ -52,4 +53,3 @@ export function signOutUser() {
     return dispatch(signOutSuccess())
   }
 }
-

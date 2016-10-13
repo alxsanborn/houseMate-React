@@ -17,6 +17,8 @@ const tabStyle = {
   color: 'black',
 }
 
+let currentUserId = Number(sessionStorage.currentUser)
+
 class ChoresIndex extends React.Component {
   constructor(props) {
     super(props)
@@ -27,6 +29,26 @@ class ChoresIndex extends React.Component {
     this.deleteChore = this.deleteChore.bind(this)
     this.selectChore = this.selectChore.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.currentUserChores = this.currentUserChores.bind(this)
+    this.assignCurrentUserChores = this.assignCurrentUserChores.bind(this)
+  }
+
+  currentUserChores(){
+    let currentUser =
+    this.props.groupMembers.find((member) => { return member.id === currentUserId})
+    if (currentUser){
+        return currentUser.assigned_chores
+    }
+  }
+
+  assignCurrentUserChores(){
+    let currentUserChores = []
+
+    if (this.currentUserChores()) {
+      currentUserChores = this.currentUserChores()
+    }
+
+    return currentUserChores
   }
 
   handleStatus(status) {
@@ -86,7 +108,7 @@ class ChoresIndex extends React.Component {
             <Tab label="Your Upcoming Chores" value={0}>
               <div>
                 <ul>
-                  { this.props.chores.map( (chore, index) =>
+                  { this.assignCurrentUserChores().map( (chore, index) =>
                     <div>
                       <Checkbox
                       label={ chore.name }
@@ -102,10 +124,14 @@ class ChoresIndex extends React.Component {
             </Tab>
 
             <Tab label="Household Chores" value={1}>
-              {"test"}
+              <ul>
+              {this.props.chores.map(chore => {
+                return <li>{chore.name} <i>(assigned to {chore.assigned_to})</i></li>
+              })}
+              </ul>
             </Tab>
             <Tab label="Chore Distribution" value={2}>
-            <ChoresChart chores={this.props.chores} groupMembers={this.props.groupMembers}/>
+            <ChoresChart    chores={this.props.chores} groupMembers={this.props.groupMembers} />
             </Tab>
          </Tabs>
         </Paper>

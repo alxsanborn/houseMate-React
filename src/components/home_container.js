@@ -42,7 +42,8 @@ class HomeContainer extends React.Component {
                 {/* check if this way of passsing props works */}
               </div>
             <div style={style.box}>
-                <ChoresIndex chores={ this.props.chores } groupMembers={this.props.groupMembers} />
+                <ChoresIndex chores={ this.props.chores } groupMembers={this.props.groupMembers}
+                />
             </div>
             <div style={style.box}>
               <BillsIndex bills={ this.props.bills } />
@@ -65,6 +66,7 @@ function mapStateToProps(state) {
   let chores = []
   let bills = []
   let messages = []
+  let currentUser
 
   if (state.events.length > 0) {
     socialEvents = state.events.filter(event => {
@@ -83,12 +85,15 @@ function mapStateToProps(state) {
   }
 
   groupMembers = state.members
+  currentUser = state.current_user
+
   return {
     groupMembers: groupMembers,
     socialEvents: socialEvents,
     chores: chores,
     bills: bills,
-    messages: messages
+    messages: messages,
+    currentUser: currentUser
   }
 }
 
