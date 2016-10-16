@@ -34,8 +34,7 @@ class ChoresIndex extends React.Component {
   }
 
   currentUserChores(){
-    let currentUser =
-    this.props.groupMembers.find((member) => { return member.id === currentUserId})
+    let currentUser = this.props.groupMembers.find((member) => { return member.id === currentUserId})
     if (currentUser){
         return currentUser.assigned_chores
     }
@@ -95,7 +94,7 @@ class ChoresIndex extends React.Component {
           <AppBar
           title="Chores"
           style={ { backgroundColor: '#68B6C2' } }
-          iconElementRight={ <AddChoreForm/> }
+          iconElementRight={ <AddChoreForm groupMembers={this.props.groupMembers}/> }
           />
 
           <Tabs
@@ -103,7 +102,7 @@ class ChoresIndex extends React.Component {
             value={this.state.slideIndex}
             tabItemContainerStyle={{backgroundColor:'#b3dae0', color: 'black'}}
             inkBarStyle={{backgroundColor:"#FFC107"}}
-         >
+          >
             <Tab label="Your Upcoming Chores" value={0}>
               <div>
                 <ul>
@@ -125,7 +124,7 @@ class ChoresIndex extends React.Component {
             <Tab label="Household Chores" value={1}>
               <ul>
               {this.props.chores.map(chore => {
-                return <li>{chore.name} <i>(assigned to {chore.assigned_to})</i></li>
+                return <li>{chore.name} <i>(assigned to {chore.assigned_to[0].first_name})</i></li>
               })}
               </ul>
             </Tab>

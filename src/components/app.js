@@ -14,9 +14,3 @@ export default (props) => {
     </MuiThemeProvider>
   )
 }
-
-
-
-
-
-
