@@ -64,7 +64,7 @@ class AddMessageForm extends React.Component {
         </IconButton>
         <Dialog title="Add a Message" actions={ actions } modal={ true } open={ this.state.open }>
           <form>
-            <Field withRef={ true } ref="content" component={ TextField } hintText="Message" onChange={ this.handleInputChange } value={ this.state.name } />
+            <Field withRef={ true } ref="content" component={ TextField } hintText="Message" onChange={ this.handleInputChange } />
           </form>
         </Dialog>
       </div>
