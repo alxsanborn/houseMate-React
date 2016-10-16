@@ -10,7 +10,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 import ChoresChart from './chores_chart.js'
 import {Tabs, Tab} from 'material-ui/Tabs';
-import SwipeableViews from 'react-swipeable-views';
 
 const tabStyle = {
   backgroundColor: '#b3dae0',
@@ -34,10 +33,7 @@ class ChoresIndex extends React.Component {
   }
 
   currentUserChores(){
-    let currentUser = this.props.groupMembers.find((member) => { return member.id === currentUserId})
-    if (currentUser){
-        return currentUser.assigned_chores
-    }
+    return this.props.chores.filter(chore => chore.assigned_to[0].id === currentUserId)
   }
 
   assignCurrentUserChores(){
@@ -60,10 +56,10 @@ class ChoresIndex extends React.Component {
 
   selectChore(event) {
     const completeChore = {
-      id: this.props.chores[event.target.id].id,
-      name: this.props.chores[event.target.id].name,
+      id: this.assignCurrentUserChores()[event.target.id].id,
+      name: this.assignCurrentUserChores()[event.target.id].name,
       category: 'chore',
-      status: this.handleStatus(this.props.chores[event.target.id].status)
+      status: this.handleStatus(this.assignCurrentUserChores()[event.target.id].status)
     }
     this.props.actions.editEvent(completeChore)
   }
@@ -106,7 +102,7 @@ class ChoresIndex extends React.Component {
             <Tab label="Your Upcoming Chores" value={0}>
               <div>
                 <ul>
-                  { this.assignCurrentUserChores().map( (chore, index) =>
+                  { this.assignCurrentUserChores().map((chore, index) =>
                     <div>
                       <Checkbox
                       label={ chore.name }
