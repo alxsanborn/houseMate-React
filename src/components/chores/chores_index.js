@@ -29,22 +29,23 @@ class ChoresIndex extends React.Component {
     this.selectChore = this.selectChore.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.currentUserChores = this.currentUserChores.bind(this)
-    this.assignCurrentUserChores = this.assignCurrentUserChores.bind(this)
+    // this.assignCurrentUserChores = this.assignCurrentUserChores.bind(this)
   }
 
   currentUserChores(){
-    return this.props.chores.filter(chore => chore.assigned_to[0].id === currentUserId)
+    let currentChores = this.props.chores.filter(chore => chore.assigned_to[0].id === currentUserId)
+    return currentChores
   }
 
-  assignCurrentUserChores(){
-    let currentUserChores = []
-
-    if (this.currentUserChores()) {
-      currentUserChores = this.currentUserChores()
-    }
-
-    return currentUserChores
-  }
+  // assignCurrentUserChores(){
+  //   let currentUserChores = []
+  //
+  //   if (this.currentUserChores()) {
+  //     currentUserChores = this.currentUserChores()
+  //   }
+  //
+  //   return currentUserChores
+  // }
 
   handleStatus(status) {
     if (status === 'pending') {
@@ -56,10 +57,10 @@ class ChoresIndex extends React.Component {
 
   selectChore(event) {
     const completeChore = {
-      id: this.assignCurrentUserChores()[event.target.id].id,
-      name: this.assignCurrentUserChores()[event.target.id].name,
+      id: this.currentUserChores()[event.target.id].id,
+      name: this.currentUserChores()[event.target.id].name,
       category: 'chore',
-      status: this.handleStatus(this.assignCurrentUserChores()[event.target.id].status)
+      status: this.handleStatus(this.currentUserChores()[event.target.id].status)
     }
     this.props.actions.editEvent(completeChore)
   }
@@ -102,7 +103,7 @@ class ChoresIndex extends React.Component {
             <Tab label="Your Upcoming Chores" value={0}>
               <div>
                 <ul>
-                  { this.assignCurrentUserChores().map((chore, index) =>
+                  { this.currentUserChores().map((chore, index) =>
                     <div>
                       <Checkbox
                       label={ chore.name }
