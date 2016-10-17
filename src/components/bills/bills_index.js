@@ -26,7 +26,6 @@ export default class BillsIndex extends React.Component {
     let current = Moment();
     let recentBills = this.props.bills.filter(bill => bill.month == current.month() && bill.year === current.format('YYYY'))
     let bills = []
-
     if (recentBills) {
       bills = recentBills.map((event, index) => <Checkbox label={ `${event.name} $${event.amount}` } />)
     }
@@ -43,7 +42,6 @@ export default class BillsIndex extends React.Component {
   };
 
   render() {
-
     return (
       <div className='bills'>
         <Paper zDepth={ 3 }>
