@@ -15,40 +15,40 @@ const BillsChart = (props) => {
 
   lastYearsBills.forEach(bill=>{
     switch(bill.month) {
-      case "Jan":
+      case "01":
         lastYearsBillsAggregated[0] += Number(bill.amount)
         break;
-      case "Feb":
+      case "02":
         lastYearsBillsAggregated[1] += Number(bill.amount)
         break;
-      case "Mar":
+      case "03":
         lastYearsBillsAggregated[2] += Number(bill.amount)
         break;
-      case "Apr":
+      case "04":
         lastYearsBillsAggregated[3] += Number(bill.amount)
         break;
-      case "May":
+      case "05":
         lastYearsBillsAggregated[4] += Number(bill.amount)
         break;
-      case "Jun":
+      case "06":
         lastYearsBillsAggregated[5] += Number(bill.amount)
         break;
-      case "Jul":
+      case "07":
         lastYearsBillsAggregated[6] += Number(bill.amount)
         break;
-      case "Aug":
+      case "08":
         lastYearsBillsAggregated[7] += Number(bill.amount)
         break;
-      case "Sep":
+      case "09":
         lastYearsBillsAggregated[8] += Number(bill.amount)
         break;
-      case "Oct":
+      case "10":
         lastYearsBillsAggregated[9] += Number(bill.amount)
         break;
-      case "Nov":
+      case "11":
         lastYearsBillsAggregated[10] += Number(bill.amount)
         break;
-      case "Dec":
+      case "12":
         lastYearsBillsAggregated[11] += Number(bill.amount)
         break;
     }
@@ -58,40 +58,40 @@ const BillsChart = (props) => {
 
   thisYearsBills.forEach(bill=>{
     switch(bill.month) {
-      case "Jan":
+      case "01":
         thisYearsBillsAggregated[0] += Number(bill.amount)
         break;
-      case "Feb":
+      case "02":
         thisYearsBillsAggregated[1] += Number(bill.amount)
         break;
-      case "Mar":
+      case "03":
         thisYearsBillsAggregated[2] += Number(bill.amount)
         break;
-      case "Apr":
+      case "04":
         thisYearsBillsAggregated[3] += Number(bill.amount)
         break;
-      case "May":
+      case "05":
         thisYearsBillsAggregated[4] += Number(bill.amount)
         break;
-      case "Jun":
+      case "06":
         thisYearsBillsAggregated[5] += Number(bill.amount)
         break;
-      case "Jul":
+      case "07":
         thisYearsBillsAggregated[6] += Number(bill.amount)
         break;
-      case "Aug":
+      case "08":
         thisYearsBillsAggregated[7] += Number(bill.amount)
         break;
-      case "Sep":
+      case "09":
         thisYearsBillsAggregated[8] += Number(bill.amount)
         break;
-      case "Oct":
+      case "10":
         thisYearsBillsAggregated[9] += Number(bill.amount)
         break;
-      case "Nov":
+      case "11":
         thisYearsBillsAggregated[10] += Number(bill.amount)
         break;
-      case "Dec":
+      case "12":
         thisYearsBillsAggregated[11] += Number(bill.amount)
         break;
     }
