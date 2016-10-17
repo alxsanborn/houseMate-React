@@ -26,7 +26,8 @@ class AddChoreForm extends React.Component {
     open: false,
     date: null,
     time: null,
-    assigned_to: ''
+    assigned_to: '',
+    value: 1
     }
 
     this.handleName = this.handleName.bind(this);
@@ -55,12 +56,12 @@ class AddChoreForm extends React.Component {
       name: this.state.name,
       end_time: this.state.date,
       category: "chore",
-      assigned_to: {user: this.state.assigned_to}
+      assigned_to: this.state.assigned_to
     }
 
     this.props.actions.addEvent(newChore)
     this.handleClose()
-    this.refs.name.getRenderedComponent().props.input.onChange("");
+    this.setState({name: "", end_time: null});
   }
 
   handleOpen = () => {
@@ -72,7 +73,7 @@ class AddChoreForm extends React.Component {
   };
 
   handleAssignment = (event, index, value) => {
-    this.setState({assigned_to: value});
+    this.setState({assigned_to: value, value: value});
   };
 
   render() {
@@ -101,24 +102,19 @@ class AddChoreForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
+          <TextField hintText="What chore needs to be completed?" onChange={this.handleName}/><br/>
 
-          <TextField hintText="What chore needs to be completed?" onChange={this.handleName}/>
+          <SelectField
+            value={this.state.assigned_to}
+            onChange={this.handleAssignment}
+            floatingLabelText={"Assign to: "}>
+            {this.props.groupMembers.map(function(member) {
+              return <MenuItem value={member.id} primaryText={ member.first_name }/>
+            })}
+          </SelectField><br/>
 
           <DatePicker onChange={this.handleDate} hintText="Date to be completed by" />
           <TimePicker onChange={this.handleTime} hintText="Time to be completed by" />
-
-            <SelectField
-            floatingLabelText={"Assign to: "}
-            floatingLabelStyle={{color: '#68B6C2'}}
-            value={this.state.assigned_to}
-            onChange={this.handleAssignment}>
-
-              {this.props.groupMembers.map(function(member) {
-                return <MenuItem value={ member} primaryText={ member.first_name }/>
-              })}
-
-          </SelectField>
-
 
         </form>
       </Dialog>
