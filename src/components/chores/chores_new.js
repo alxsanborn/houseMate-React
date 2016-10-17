@@ -56,7 +56,7 @@ class AddChoreForm extends React.Component {
       name: this.state.name,
       end_time: this.state.date,
       category: "chore",
-      assigned_to: {user: this.state.assigned_to}
+      assigned_to: this.state.assigned_to
     }
 
     this.props.actions.addEvent(newChore)
