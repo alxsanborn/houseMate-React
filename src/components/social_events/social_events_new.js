@@ -48,7 +48,7 @@ class AddSocialEventForm extends React.Component {
   handleSubmit(event){
     const newSocialEvent = {
       name: this.state.name,
-      start_time: this.state.date,
+      end_time: this.state.date,
       category: "social",
     }
     this.props.actions.addEvent(newSocialEvent)
