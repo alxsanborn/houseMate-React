@@ -1,5 +1,4 @@
 import React from 'react'
-// import {connect} from 'react-redux'
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar'
 import Checkbox from 'material-ui/Checkbox'
@@ -7,6 +6,8 @@ import AddBillForm from './bills_new'
 
 import BillsChart from './bills_chart.js'
 import {Tabs, Tab} from 'material-ui/Tabs';
+
+import Moment from 'moment-js';
 
 export default class BillsIndex extends React.Component {
   constructor(props) {
@@ -16,18 +17,21 @@ export default class BillsIndex extends React.Component {
       slideIndex: 0
     }
     this.handleChange = this.handleChange.bind(this)
+    this.renderBills = this.renderBills.bind(this)
   }
 
-  render() {
-    return (
-      <div className='bills'>
-        <Paper zDepth={ 3 }>
 
 
-          <AddBillForm/>
-        </Paper>
-      </div>
-    )
+  renderBills(){
+    let current = Moment();
+    let recentBills = this.props.bills.filter(bill => bill.month == current.month() && bill.year === current.format('YYYY'))
+    let bills = []
+
+    if (recentBills) {
+      bills = recentBills.map((event, index) => <Checkbox label={ `${event.name} $${event.amount}` } />)
+    }
+
+    return bills
   }
 
   handleChange(value) {
@@ -58,7 +62,7 @@ export default class BillsIndex extends React.Component {
             <Tab label="Upcoming Bills" value={0}>
               <div>
                 <ul>
-                  { this.props.bills.map((event, index) => <Checkbox label={ `${event.name} $${event.amount}` } />) }
+                  {this.renderBills()}
                 </ul>
               </div>
 

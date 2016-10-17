@@ -102,7 +102,6 @@ class AddChoreForm extends React.Component {
         modal={true}
         open={this.state.open}>
         <form>
-
           <TextField hintText="What chore needs to be completed?" onChange={this.handleName}/><br/>
 
           <SelectField
@@ -116,10 +115,6 @@ class AddChoreForm extends React.Component {
 
           <DatePicker onChange={this.handleDate} hintText="Date to be completed by" />
           <TimePicker onChange={this.handleTime} hintText="Time to be completed by" />
-
-
-
-
 
         </form>
       </Dialog>
