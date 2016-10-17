@@ -61,7 +61,7 @@ class AddChoreForm extends React.Component {
 
     this.props.actions.addEvent(newChore)
     this.handleClose()
-    this.refs.name.getRenderedComponent().props.input.onChange("");
+    this.setState({name: "", end_time: null});
   }
 
   handleOpen = () => {
