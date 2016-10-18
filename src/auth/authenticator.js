@@ -7,7 +7,6 @@ class Auth {
 
   static signOut() {
     sessionStorage.removeItem('jwt');
-    sessionStorage.removeItem('currentUser');
     browserHistory.push('/')
   }
 }

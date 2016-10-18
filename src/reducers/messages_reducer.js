@@ -6,7 +6,7 @@ export default function messagesReducer(state = initialState.messages, action) {
     case 'FETCH_MESSAGES_SUCCESS':
       return action.messages
     case 'ADD_MESSAGE_SUCCESS':
-      return [action.payload, ...state]
+      return [...state, action.payload]
     default:
       return state;
   }
