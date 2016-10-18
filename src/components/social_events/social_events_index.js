@@ -20,7 +20,7 @@ class SocialEvents extends React.Component {
           />
 
           <ul>
-            {this.props.social_events.map((event, index) =>  <li>{event.name} | {Moment(event.end_time).format('dddd')}</li> )}
+            {this.props.social_events.map((event, index) =>  <li>{event.name} | {Moment(event.start_time).format('dddd')}</li> )}
           </ul>
 
           <ul>
