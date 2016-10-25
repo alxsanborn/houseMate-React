@@ -17,31 +17,26 @@ class AddMessageForm extends React.Component {
     super(props);
 
     this.state = {
-      content: '',
       open: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.handleContent = this.handleContent.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   };
 
   handleSubmit() {
     const newMessage = {
-      content: this.state.content,
+      content: this.refs.content.value,
     }
-
+    this.refs.content.getRenderedComponent().props.input.onChange("");
 
     this.props.actions.addMessage(newMessage)
-    this.setState({content: ""});
     this.handleClose();
-
   }
 
-  handleContent(event) {
-    this.setState({
-      content: event.target.value
-    })
+  handleInputChange(event) {
+    this.refs.content.getRenderedComponent().props.input.onChange(event.target.value);
   }
 
   handleOpen = () => {
@@ -69,7 +64,7 @@ class AddMessageForm extends React.Component {
         </IconButton>
         <Dialog title="Add a Message" actions={ actions } modal={ true } open={ this.state.open }>
           <form>
-            <TextField hintText="Message" onChange={this.handleContent} />
+            <Field withRef={ true } ref="content" component={ TextField } hintText="Message" onChange={ this.handleInputChange } />
           </form>
         </Dialog>
       </div>
